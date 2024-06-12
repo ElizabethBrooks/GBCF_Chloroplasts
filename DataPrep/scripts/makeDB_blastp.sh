@@ -12,9 +12,6 @@ dbFile=$1
 # retrieve output paths
 outputFolder=$2
 
-# move to output folder
-cd $outputFolder
-
 # status message
 echo "Building blast able databases..."
 

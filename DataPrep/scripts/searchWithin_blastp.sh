@@ -6,13 +6,13 @@
 #$ -pe smp 4
 
 # script to use blastp to search to build a blast file for MCScanX 
-# usage: qsub searchWithin_blastp.sh queryFile dbFolder outputFolder outputFile
+# usage: qsub searchWithin_blastp.sh dbFile dbFolder outputFolder outputFile
 
 # load necessary modules for ND CRC servers
 module load bio/2.0
 
 # retrieve input paths
-queryFile=$1
+dbFile=$1
 dbFolder=$2
 
 # retrieve output paths
