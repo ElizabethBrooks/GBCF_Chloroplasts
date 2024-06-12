@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script to convert an input multiline fasta to single
+# script to check the lengths of sequences in a fasta file
 # usage: bash check_lengths.sh inputFile
 # usage: bash check_lengths.sh /Users/bamflappy/GBCF/JRS/chloroplast/Juglanschlorosaln.fmt.fa
 

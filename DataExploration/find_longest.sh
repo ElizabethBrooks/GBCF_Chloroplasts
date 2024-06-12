@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script to convert an input multiline fasta to single
+# script to find the longest sequences relative to a threshold in a fasta file
 # usage: bash find_longest.sh inputFile
 # usage: bash find_longest.sh /Users/bamflappy/GBCF/JRS/chloroplast/genome_lengths.csv
 

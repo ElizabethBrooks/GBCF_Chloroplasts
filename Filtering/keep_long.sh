@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script to convert an input multiline fasta to single
+# script to retrieve the longest sequence in a fasta file
 # usage: bash keep_long.sh inputFile
 # usage: bash keep_long.sh /Users/bamflappy/GBCF/JRS/chloroplast/Juglanschlorosaln.fmt.fa
 

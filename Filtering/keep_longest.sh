@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# script to convert an input multiline fasta to single
+# script to retrieve the longest sequences relative to a threshold in a fasta file
 # usage: bash keep_longest.sh inputFile
 # usage: bash keep_longest.sh /Users/bamflappy/GBCF/JRS/chloroplast/Juglanschlorosaln.fmt.fa
 
