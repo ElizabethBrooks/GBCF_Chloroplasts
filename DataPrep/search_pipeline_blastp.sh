@@ -31,7 +31,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # move to the scripts directory
-cd ../scripts
+cd scripts
 
 # status message
 echo "Beginning analysis..."
