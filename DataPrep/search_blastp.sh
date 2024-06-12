@@ -14,11 +14,11 @@
 module load bio/2.0
 
 # retrieve inputs
-queryFile=$(grep "ailanthifolia:" ../InputData/inputs.txt | tr -d " " | sed "s/ailanthifolia://g")
-dbFile=$(grep "arabadopsis:" ../InputData/inputs.txt | tr -d " " | sed "s/arabadopsis://g")
+queryFile=$(grep "ailanthifolia:" ../InputData/inputs_HPC.txt | tr -d " " | sed "s/ailanthifolia://g")
+dbFile=$(grep "arabadopsis:" ../InputData/inputs_HPC.txt | tr -d " " | sed "s/arabadopsis://g")
 
 # setup outputs directory
-outputFolder=$(grep "outputs:" ../InputData/inputs.txt | tr -d " " | sed "s/outputs://g")
+outputFolder=$(grep "outputs:" ../InputData/inputs_HPC.txt | tr -d " " | sed "s/outputs://g")
 outputFolder=$outputFolder"/orthology_MCScanX"
 
 #Make output directory
