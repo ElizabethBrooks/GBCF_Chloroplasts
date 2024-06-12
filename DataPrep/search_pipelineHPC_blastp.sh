@@ -3,17 +3,14 @@
 # script to use blastp to search to build a blast file for MCScanX 
 # https://www-nature-com.proxy.library.nd.edu/articles/s41596-024-00968-2
 # https://github.com/wyp1125/MCScanX?tab=readme-ov-file
-# usage: bash search_pipeline_blastp.sh
+# usage: bash search_pipelineHPC_blastp.sh
 
 # retrieve inputs
 queryFile=$(grep "ailanthifolia:" ../InputData/inputs_HPC.txt | tr -d " " | sed "s/ailanthifolia://g")
-#queryFile=$(grep "ailanthifolia:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifolia://g")
 dbFile=$(grep "arabadopsis:" ../InputData/inputs_HPC.txt | tr -d " " | sed "s/arabadopsis://g")
-#dbFile=$(grep "arabadopsis:" ../InputData/inputs_local.txt | tr -d " " | sed "s/arabadopsis://g")
 
 # setup outputs directory
 outputFolder=$(grep "outputs:" ../InputData/inputs_HPC.txt | tr -d " " | sed "s/outputs://g")
-#outputFolder=$(grep "outputs:" ../InputData/inputs_local.txt | tr -d " " | sed "s/outputs://g")
 outputFolder=$outputFolder"/orthology_MCScanX"
 
 # make output directory

@@ -9,7 +9,7 @@
 # usage: qsub searchBetween_blastp.sh queryFile dbFolder outputFolder outputFile
 
 # load necessary modules for ND CRC servers
-module load bio/2.0
+#module load bio/2.0
 
 # retrieve input paths
 queryFile=$1

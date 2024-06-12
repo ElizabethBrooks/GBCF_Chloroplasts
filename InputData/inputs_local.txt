@@ -1,3 +1,5 @@
 outputs: /Users/bamflappy/GBCF/JRS/chloroplast
-arabadopsis: /Users/bamflappy/GBCF/JRS/chloroplast/TAIR10_1_ncbi_dataset/ncbi_dataset/data/GCF_000001735.4/protein.faa
-ailanthifolia: /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/sequence.txt
+arabadopsisPep: /Users/bamflappy/GBCF/JRS/chloroplast/ArabidopsisThaliana/Arabidopsis_thaliana_chloroplast_NC_000932.1_ncbi/sequence.txt
+ailanthifoliaPep: /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/sequence.txt
+arabadopsisFeat: /Users/bamflappy/GBCF/JRS/chloroplast/ArabidopsisThaliana/Arabidopsis_thaliana_chloroplast_NC_000932.1_ncbi/chloroplast_genes.gff
+ailanthifoliaFeat: /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/chloroplast_genes.gff

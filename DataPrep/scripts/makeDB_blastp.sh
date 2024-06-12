@@ -4,7 +4,7 @@
 # usage: bash makeDB_blastp.sh dbFile outputFolder
 
 # load necessary modules for ND CRC servers
-module load bio/2.0
+#module load bio/2.0
 
 # retrieve input paths
 dbFile=$1
