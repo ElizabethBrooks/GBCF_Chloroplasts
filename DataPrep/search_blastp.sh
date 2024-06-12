@@ -37,14 +37,14 @@ echo "Building blast able database..."
 
 # make the blast able database
 #./makeblastdb -in ncbi/species1.fa -out ncbiDB/species1 -dbtype prot
-makeblastdb -in $dbFile -out $outputFolder -dbtype prot
+makeblastdb -in $dbFile -out $outputFolder"/arabadopsis_db" -dbtype prot
 
 # status message
 echo "Beginning blastp search..."
 
 # Execute all-against-all BLASTP running all the desired pairwise genomes with an E-value cutoff of 1 × 10−10 and the best five non-self-hits reported in each target genome
 #blastp -db ncbiDB/species1 -query ncbi/species2.fa -evalue 1e-10 -num_alignments 5 -outfmt 6 -out intermediateData/species1-2.blast
-blastp -query $queryFile -db $dbFile -outfmt 6 -evalue 1e-10 -num_alignments 5 -out $outputFolder"/arabadopsis-ailanthifolia.blast" -num_threads 4
+blastp -query $queryFile -db $outputFolder"/arabadopsis_db" -outfmt 6 -evalue 1e-10 -num_alignments 5 -out $outputFolder"/arabadopsis_ailanthifolia.blast" -num_threads 4
 
 # status message
 echo "Finished blastp search!"
