@@ -25,8 +25,7 @@ cd $outputFolder
 # status message
 echo "Beginning first blastp search..."
 
-# 16. Execute all-against-all BLASTP running all the desired pairwise genomes with an E-value cutoff of 1 × 10−10 and the best five non-self-hits reported in each target genome.
-# blastp -db ncbiDB/species1 -query ncbi/species2.fa -evalue 1e-10 -num_alignments 5 -outfmt 6 -out intermediateData/species1-2.blast
+# perform blastp search
 blastp -num_threads 4 -query $queryFile -db $dbFolder -outfmt 6 -evalue 1e-10 -num_alignments 5 -out $outputFile
 
 # status message

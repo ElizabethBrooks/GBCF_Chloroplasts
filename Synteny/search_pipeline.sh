@@ -65,16 +65,16 @@ bash makeDB_blastp.sh $dbFile $outputFolder"/arabadopsis_db"
 bash makeDB_blastp.sh $queryFile $outputFolder"/ailanthifolia_db"
 
 # 16. Execute all-against-all BLASTP running all the desired pairwise genomes with an E-value cutoff of 1 × 10−10 and the best five non-self-hits reported in each target genome.
-bash searchBetween_blastp.sh $queryFile $outputFolder"/arabadopsis_db" $outputFolder $outputFolder"/arabadopsis_ailanthifolia.blast"
+bash search_blastp.sh $queryFile $outputFolder"/arabadopsis_db" $outputFolder $outputFolder"/arabadopsis_ailanthifolia.blast" 5
 
 # 17. For each pair of genomes, switch the query and target genomes for a second execution.
-bash searchBetween_blastp.sh $dbFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_arabadopsis.blast"
+bash search_blastp.sh $dbFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_arabadopsis.blast" 5
 
 # 18. Because colinear genes may exist in the same genomes, perform within a genome all-against-all BLASTP for each genome, with the best six hits being kept.
-bash searchWithin_blastp.sh $dbFile $outputFolder"/arabadopsis_db" $outputFolder $outputFolder"/arabadopsis_arabadopsis.blast"
+bash search_blastp.sh $dbFile $outputFolder"/arabadopsis_db" $outputFolder $outputFolder"/arabadopsis_arabadopsis.blast" 6
 
 # perform second within genome all-against-all BLASTP search
-bash searchWithin_blastp.sh $queryFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_ailanthifolia.blast"
+bash search_blastp.sh $queryFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_ailanthifolia.blast" 6
 
 # 20. Concatenate the .blast files to generate a single ‘master.blast’ file
 bash combineResults_blastp.sh $outputFolder $outputFolder"/arabadopsis_ailanthifolia_master.blast"
