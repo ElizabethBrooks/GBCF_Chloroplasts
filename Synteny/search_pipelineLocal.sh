@@ -83,5 +83,14 @@ bash combineResults_blastp.sh $outputFolder $outputFolder"/arabadopsis_ailanthif
 cp $outputFolder"/arabadopsis_ailanthifolia_master.gff" $dataFolder"/master.gff"
 cp $outputFolder"/arabadopsis_ailanthifolia_master.blast" $dataFolder"/master.blast"
 
+# create MCScanX files for downstream analysis
+MCScanX data/master
+
+# create dual synteny plots
+bash create_dual_synteny.sh
+
+# create dot plots
+bash create_dot.sh
+
 # status message
 echo "Analysis complete!"
