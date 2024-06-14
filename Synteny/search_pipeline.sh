@@ -11,6 +11,9 @@ dbFileIn=$(grep "arabadopsisPep:" ../InputData/inputs_local.txt | tr -d " " | se
 queryFileFeat=$(grep "ailanthifoliaFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaFeat://g")
 dbFileFeat=$(grep "arabadopsisFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/arabadopsisFeat://g")
 
+# retrieve software location
+softLoc="/Users/bamflappy/MCScanX-master/downstream_analyses"
+
 # setup outputs directory
 outputFolder=$(grep "outputs:" ../InputData/inputs_local.txt | tr -d " " | sed "s/outputs://g")
 outputFolder=$outputFolder"/orthology_MCScanX"
@@ -83,6 +86,9 @@ bash combineResults_blastp.sh $outputFolder $outputFolder"/arabadopsis_ailanthif
 cp $outputFolder"/arabadopsis_ailanthifolia_master.gff" $dataFolder"/master.gff"
 cp $outputFolder"/arabadopsis_ailanthifolia_master.blast" $dataFolder"/master.blast"
 
+# move to software location
+cd $softLoc
+
 # create MCScanX files for downstream analysis
 MCScanX data/master
 
@@ -91,6 +97,9 @@ bash create_dual_synteny.sh
 
 # create dot plots
 bash create_dot.sh
+
+# create circle plots
+bash create_circle.sh
 
 # status message
 echo "Analysis complete!"
