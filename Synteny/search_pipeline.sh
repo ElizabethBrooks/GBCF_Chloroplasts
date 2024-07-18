@@ -7,9 +7,9 @@
 
 # retrieve inputs
 queryFileIn=$(grep "ailanthifoliaPep:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaPep://g")
-dbFileIn=$(grep "arabadopsisPep:" ../InputData/inputs_local.txt | tr -d " " | sed "s/arabadopsisPep://g")
+dbFileIn=$(grep "thalianaPep:" ../InputData/inputs_local.txt | tr -d " " | sed "s/thalianaPep://g")
 queryFileFeat=$(grep "ailanthifoliaFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaFeat://g")
-dbFileFeat=$(grep "arabadopsisFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/arabadopsisFeat://g")
+dbFileFeat=$(grep "thalianaFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/thalianaFeat://g")
 
 # retrieve software location
 softLoc="/Users/bamflappy/MCScanX-master/downstream_analyses"
@@ -22,7 +22,7 @@ outputFolder=$outputFolder"/orthology_MCScanX"
 mkdir $outputFolder
 
 # setup outputs subdirectory
-outputFolder=$outputFolder"/arabadopsis_ailanthifolia"
+outputFolder=$outputFolder"/thaliana_ailanthifolia"
 
 # make output subdirectory
 mkdir $outputFolder
@@ -56,35 +56,35 @@ echo "Beginning analysis..."
 # 13. In the ‘intermediateData’ folder (from Step 11), concatenate the .gff file of all species into a ‘master.gff’ file
 # copy the cleaned gff files for each species
 cp $queryFileFeat $outputFolder"/ailanthifolia.gff"
-cp $dbFileFeat $outputFolder"/arabadopsis.gff"
+cp $dbFileFeat $outputFolder"/thaliana.gff"
 # combine the gff files for MCScanX
-cat $outputFolder"/"*.gff > $outputFolder"/arabadopsis_ailanthifolia_master.gff"
+cat $outputFolder"/"*.gff > $outputFolder"/thaliana_ailanthifolia_master.gff"
 
 # 15. Build the BLASTP database and place it in the ‘ncbiDB’ folder
 # make the first blast able database
-bash makeDB_blastp.sh $dbFile $outputFolder"/arabadopsis_db"
+bash makeDB_blastp.sh $dbFile $outputFolder"/thaliana_db"
 
 # make the second blast able database
 bash makeDB_blastp.sh $queryFile $outputFolder"/ailanthifolia_db"
 
 # 16. Execute all-against-all BLASTP running all the desired pairwise genomes with an E-value cutoff of 1 × 10−10 and the best five non-self-hits reported in each target genome.
-bash search_blastp.sh $queryFile $outputFolder"/arabadopsis_db" $outputFolder $outputFolder"/arabadopsis_ailanthifolia.blast" 5
+bash search_blastp.sh $queryFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_ailanthifolia.blast" 5
 
 # 17. For each pair of genomes, switch the query and target genomes for a second execution.
-bash search_blastp.sh $dbFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_arabadopsis.blast" 5
+bash search_blastp.sh $dbFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_thaliana.blast" 5
 
 # 18. Because colinear genes may exist in the same genomes, perform within a genome all-against-all BLASTP for each genome, with the best six hits being kept.
-bash search_blastp.sh $dbFile $outputFolder"/arabadopsis_db" $outputFolder $outputFolder"/arabadopsis_arabadopsis.blast" 6
+bash search_blastp.sh $dbFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_thaliana.blast" 6
 
 # perform second within genome all-against-all BLASTP search
 bash search_blastp.sh $queryFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_ailanthifolia.blast" 6
 
 # 20. Concatenate the .blast files to generate a single ‘master.blast’ file
-bash combineResults_blastp.sh $outputFolder $outputFolder"/arabadopsis_ailanthifolia_master.blast"
+bash combineResults_blastp.sh $outputFolder $outputFolder"/thaliana_ailanthifolia_master.blast"
 
 # copy and re-name the inputs for MCScanX to the data folder
-cp $outputFolder"/arabadopsis_ailanthifolia_master.gff" $dataFolder"/master.gff"
-cp $outputFolder"/arabadopsis_ailanthifolia_master.blast" $dataFolder"/master.blast"
+cp $outputFolder"/thaliana_ailanthifolia_master.gff" $dataFolder"/master.gff"
+cp $outputFolder"/thaliana_ailanthifolia_master.blast" $dataFolder"/master.blast"
 
 # move to software location
 cd $softLoc
