@@ -3,7 +3,7 @@
 # script to use blastp to search to build a blast file for MCScanX 
 # https://www-nature-com.proxy.library.nd.edu/articles/s41596-024-00968-2
 # https://github.com/wyp1125/MCScanX?tab=readme-ov-file
-# usage: bash search_pipelineLocal_blastp.sh
+# usage: bash search_MCScanX_pipeline.sh
 
 # retrieve inputs
 queryFileIn=$(grep "ailanthifoliaPep:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaPep://g")
@@ -62,22 +62,22 @@ cat $outputFolder"/"*.gff > $outputFolder"/thaliana_ailanthifolia_master.gff"
 
 # 15. Build the BLASTP database and place it in the ‘ncbiDB’ folder
 # make the first blast able database
-bash makeDB_blastp.sh $dbFile $outputFolder"/thaliana_db"
+bash makeDB_blast.sh $dbFile $outputFolder"/thaliana_db" "prot"
 
 # make the second blast able database
-bash makeDB_blastp.sh $queryFile $outputFolder"/ailanthifolia_db"
+bash makeDB_blast.sh $queryFile $outputFolder"/ailanthifolia_db" "prot"
 
 # 16. Execute all-against-all BLASTP running all the desired pairwise genomes with an E-value cutoff of 1 × 10−10 and the best five non-self-hits reported in each target genome.
-bash search_blastp.sh $queryFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_ailanthifolia.blast" 5
+bash search_blast.sh $queryFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_ailanthifolia.blast" 5 "blastp"
 
 # 17. For each pair of genomes, switch the query and target genomes for a second execution.
-bash search_blastp.sh $dbFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_thaliana.blast" 5
+bash search_blast.sh $dbFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_thaliana.blast" 5 "blastp"
 
 # 18. Because colinear genes may exist in the same genomes, perform within a genome all-against-all BLASTP for each genome, with the best six hits being kept.
-bash search_blastp.sh $dbFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_thaliana.blast" 6
+bash search_blast.sh $dbFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_thaliana.blast" 6 "blastp"
 
 # perform second within genome all-against-all BLASTP search
-bash search_blastp.sh $queryFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_ailanthifolia.blast" 6
+bash search_blast.sh $queryFile $outputFolder"/ailanthifolia_db" $outputFolder $outputFolder"/ailanthifolia_ailanthifolia.blast" 6 "blastp"
 
 # 20. Concatenate the .blast files to generate a single ‘master.blast’ file
 bash combineResults_blastp.sh $outputFolder $outputFolder"/thaliana_ailanthifolia_master.blast"

@@ -3,3 +3,5 @@ thalianaPep: /Users/bamflappy/GBCF/JRS/chloroplast/ArabidopsisThaliana/Arabidops
 ailanthifoliaPep: /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/sequence.txt
 thalianaFeat: /Users/bamflappy/GBCF/JRS/chloroplast/ArabidopsisThaliana/Arabidopsis_thaliana_chloroplast_NC_000932.1_ncbi/chloroplast_genes.gff
 ailanthifoliaFeat: /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/chloroplast_genes.gff
+thalianaRef: /Users/bamflappy/GBCF/JRS/chloroplast/ArabidopsisThaliana/Arabidopsis_thaliana_chloroplast_NC_000932.1_ncbi/sequence.fasta
+ailanthifoliaRef: /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/sequence.fasta

@@ -3,7 +3,7 @@
 #$ -m abe
 #$ -r n
 #$ -N align_chloroplasts_jobOutput
-#$ -pe smp 16
+#$ -pe smp 20
 
 # script to align sequences using muscle
 # usage: qsub align_chloroplasts.sh
@@ -28,7 +28,7 @@ cd $alignOut
 echo "Beginning analysis..."
 
 # align reads
-muscle -threads 16 -align $inputsPath -output $alignOut"/aligned.fasta"
+muscle -align $inputsPath -output $alignOut"/aligned.fasta"
 #muscle -in $alignOut"/combined.fasta" -out $alignOut"/aligned.fasta"
 
 # status message
