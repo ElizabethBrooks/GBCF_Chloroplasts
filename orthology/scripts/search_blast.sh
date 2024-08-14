@@ -29,7 +29,7 @@ analysisType=$6
 #cd $outputFolder
 
 # status message
-echo "Beginning first blast search..."
+echo "Beginning blast search..."
 
 # perform blast search
 #$analysisType -num_threads 4 -query $queryFile -db $dbFolder -outfmt 6 -evalue 1e-10 -num_alignments $numAlignments -out $outputFile
