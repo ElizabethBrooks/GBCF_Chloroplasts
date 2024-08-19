@@ -1,6 +1,6 @@
-((1_test1:0.0004,4_test4:0.0034)100:0.0005,2_test2:0.0000,3_test3:0.0000);
+((test1:0.0004,test4:0.0034)100:0.0005,test2:0.0000,test3:0.0000);
 
-1_test1 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test1.fa
-2_test2 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test2.fa
-3_test3 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test3.fa
-4_test4 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test4.fa
+test1 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test1.fa
+test2 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test2.fa
+test3 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test3.fa
+test4 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test4.fa
