@@ -24,7 +24,7 @@ alignOut=$outputsPath"/aligned_cactus"
 mkdir $alignOut
 
 # move to the new directory
-cd $softPath
+cd $alignOut
 
 # activate python environment
 source $softEnv
@@ -33,7 +33,7 @@ source $softEnv
 echo "Beginning analysis..."
 
 # To run:
-cactus ./js $inputsPath $alignOut"/aligned_test.hal" --binariesMode singularity 
+cactus $alignOut"/js" $inputsPath $alignOut"/aligned_test.hal" --binariesMode singularity 
 
 # status message
 echo "Analysis complete!"
