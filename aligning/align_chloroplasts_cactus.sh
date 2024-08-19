@@ -22,6 +22,11 @@ outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ou
 # make a new directory for analysis
 alignOut=$outputsPath"/aligned_cactus"
 mkdir $alignOut
+#Check if the folder already exists
+if [ $? -ne 0 ]; then
+	echo "The $outFolder directory already exsists... please remove before proceeding."
+	exit 1
+fi
 
 # move to the new directory
 cd $alignOut
