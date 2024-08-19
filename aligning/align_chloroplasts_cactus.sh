@@ -2,14 +2,13 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N align_chloroplasts_jobOutput
-#$ -pe smp 20
+#$ -N align_chloroplasts_cactus_jobOutput
 
-# script to align sequences using muscle
-# usage: qsub align_chloroplasts.sh
+# script to run cactus
+# usage: qsub align_chloroplasts_cactus.sh
 
-# load the egapx software module (contains nextflow)
-#module load bio/2.0
+# activate python environment
+source /scratch365/ebrooks5/cactus/cactus_env/bin/activate
 
 # retrieve inputs
 inputsPath=$(grep "long:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/long://g")
@@ -27,9 +26,8 @@ cd $alignOut
 # status message
 echo "Beginning analysis..."
 
-# align reads
-muscle -align $inputsPath -output $alignOut"/aligned.fasta"
-#muscle -in $alignOut"/combined.fasta" -out $alignOut"/aligned.fasta"
+# To run:
+cactus ./js ./examples/evolverMammals.txt ./evolverMammals.hal --binariesMode singularity 
 
 # status message
 echo "Analysis complete!"
