@@ -1,4 +1,4 @@
-((((test1:0.0004,test2:0.0005)100:0.0002,(test3:0.0005,test7:0.0007)100:0.0449)100:0.0032,test4:0.0001)100:0.0002,test5:0.0000,test6:0.0000);
+(((test1:0.00267,test2:0.00267):0.01097,(test4:0.00161,(test5:0.00018,test6:0.00018):0.00143):0.01203):0.07995,(test3:0.00402,test7:0.00402):0.08957);
 
 test1 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test1.fa
 test2 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/test/test2.fa
