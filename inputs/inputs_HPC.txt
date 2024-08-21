@@ -2,4 +2,4 @@ outputs: /scratch365/ebrooks5/GBCF/JRS/chloroplast
 thaliana: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Arabidopsis_thaliana_chloroplast_NC_000932.1_sequence.fa
 ailanthifolia: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglans_ailanthifolia_chloroplast_NC_046433.1_sequence.fa
 long: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglanschlorosaln_long.flt.fa
-cactus: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_cactus_test.txt
+cactus: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_cactus_longest.txt
