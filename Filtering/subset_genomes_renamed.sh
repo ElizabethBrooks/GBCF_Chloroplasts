@@ -25,6 +25,6 @@ while read line; do
 	else # body
 		# output genome sequence header and body
 		echo ">"$outName > $outDir"/"$outName".fa"
-		echo $line >> $outDir"/"$outName".fa"
+		echo $line | sed "s/=//g" >> $outDir"/"$outName".fas"
 	fi
 done < $inputFile
