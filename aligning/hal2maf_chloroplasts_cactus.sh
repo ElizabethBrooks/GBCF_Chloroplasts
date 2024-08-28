@@ -11,9 +11,6 @@
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
 
-# retrieve software environment
-softPath=$(grep "cactus:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus://g")
-
 # retrieve inputs
 inputsPath=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_ref://g")
 
@@ -33,6 +30,7 @@ source $softEnv
 echo "Beginning analysis..."
 
 # To run:
+#cactus-hal2maf js aligned_chloroplasts.hal aligned_chloroplasts.maf.gz --refGenome "IDfileorder136" --chunkSize 500000 --binariesMode singularity 
 cactus-hal2maf $alignOut"/js" $alignOut"/aligned_chloroplasts.hal" $alignOut"/aligned_chloroplasts.maf.gz" --refGenome $inputsPath --chunkSize 500000 --binariesMode singularity 
 
 # status message

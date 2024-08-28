@@ -24,7 +24,7 @@ while read line; do
 		outName=$(cat $indexFile | grep "\"$line\"" | cut -d"," -f1)
 	else # body
 		# output genome sequence header and body
-		echo ">"$outName > $outDir"/"$outName".fa"
-		echo $line | sed "s/=//g" >> $outDir"/"$outName".fas"
+		echo ">IDfileorder"$outName > $outDir"/IDfileorder"$outName".fas"
+		echo $line | sed "s/=//g" >> $outDir"/IDfileorder"$outName".fas"
 	fi
 done < $inputFile

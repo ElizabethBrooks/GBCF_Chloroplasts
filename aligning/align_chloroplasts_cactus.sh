@@ -7,12 +7,10 @@
 # script to run cactus
 # usage: qsub align_chloroplasts_cactus.sh
 ## job 767536
+## job
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
-
-# retrieve software environment
-softPath=$(grep "cactus:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus://g")
 
 # retrieve inputs
 inputsPath=$(grep "cactus_tree:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_tree://g")
