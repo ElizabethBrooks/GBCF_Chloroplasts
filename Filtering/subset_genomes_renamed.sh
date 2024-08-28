@@ -16,6 +16,9 @@ indexFile="/Users/bamflappy/GBCF/JRS/chloroplast/GBCF_JRS_chloroplasts_IDindicie
 # make genomes subset dir
 mkdir $outDir 
 
+# pre-clean up
+rm $outDir"/chloroplast_genomes_renamed.fa"
+
 # split the sequences and output separate files
 while read line; do
 	# determine if current line is a header or body
@@ -24,7 +27,10 @@ while read line; do
 		outName=$(cat $indexFile | grep "\"$line\"" | cut -d"," -f1)
 	else # body
 		# output genome sequence header and body
-		echo ">IDfileorder"$outName > $outDir"/IDfileorder"$outName".fas"
-		echo $line | sed "s/=//g" >> $outDir"/IDfileorder"$outName".fas"
+		echo ">chloroplast" > $outDir"/IDfileorder"$outName".fa"
+		echo $line | sed "s/=//g" >> $outDir"/IDfileorder"$outName".fa"
+		# add to combined fasta
+		echo ">IDfileorder"$outName >> $outDir"/chloroplast_genomes_renamed.fa"
+		echo $line | sed "s/=//g" >> $outDir"/chloroplast_genomes_renamed.fa"
 	fi
 done < $inputFile

@@ -2,10 +2,10 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N hal2maf_chloroplasts_cactus_jobOutput
+#$ -N hal2maf_cactus-pg_jobOutput
 
 # script to run cactus
-# usage: qsub hal2maf_chloroplasts_cactus.sh
+# usage: qsub hal2maf_cactus-pg.sh
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
@@ -17,7 +17,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_cactus"
+alignOut=$outputsPath"/aligned_cactus-pg"
 
 # move to the new directory
 cd $alignOut
@@ -29,7 +29,7 @@ source $softEnv
 echo "Beginning analysis..."
 
 # To run:
-cactus-hal2maf $alignOut"/js" $alignOut"/aligned_chloroplasts.hal" $alignOut"/aligned_chloroplasts.maf.gz" --refGenome $inputRef --chunkSize 500000 --binariesMode singularity 
+cactus-hal2maf $alignOut"/js" $alignOut"/chloroplasts-pg/chloroplasts-pg.full.hal" $alignOut"/chloroplasts-pg.maf.gz" --refGenome $inputRef --chunkSize 500000 --binariesMode singularity 
 
 # status message
 echo "Analysis complete!"
