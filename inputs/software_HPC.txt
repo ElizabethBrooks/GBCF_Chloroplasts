@@ -1,2 +1,2 @@
-cactus: /scratch365/ebrooks5/cactus/
+cactus: /scratch365/ebrooks5/cactus
 cactus_env: /scratch365/ebrooks5/cactus/cactus_env/bin/activate

@@ -3,4 +3,4 @@ thaliana: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Arabidopsis_thaliana_chlorop
 ailanthifolia: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglans_ailanthifolia_chloroplast_NC_046433.1_sequence.fa
 long: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglanschlorosaln_long.flt.fa
 cactus_tree: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_cactus_longest_UPGMA.txt
-cactus_ref: 136
+cactus_ref: IDfileorder136
