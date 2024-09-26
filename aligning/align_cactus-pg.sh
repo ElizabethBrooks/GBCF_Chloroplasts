@@ -11,7 +11,7 @@
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
 
 # retrieve inputs
-inputsPath=$(grep "cactus_tree:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_tree://g")
+inputsPath=$(grep "cactus_pangenome:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_pangenome://g")
 
 # retrieve inputs
 inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_ref://g")
