@@ -3,9 +3,11 @@
 #$ -m abe
 #$ -r n
 #$ -N hal2maf_cactus-pg_jobOutput
+#$ -q largemem
 
 # script to run cactus
 # usage: qsub hal2maf_cactus-pg.sh
+## job 838543
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")

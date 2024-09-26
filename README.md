@@ -3,7 +3,7 @@
 - Project: JRS Chloroplasts Analysis
 - Contact: Jeanne Romero-Severson
 - Analyst: Elizabeth Brooks
-- Date: 28 August 2024
+- Date: 25 September 2024
 
 ## Code
 
@@ -15,10 +15,9 @@ Click [here](https://github.com/ElizabethBrooks/GBCF_Chloroplasts) for the analy
 2. Format input sequences and create input files for MCScanX
 3. Investigate longest sequence gene content and order using [MCScanX](https://github.com/wyp1125/MCScanX) and the NCBI reference [Arabadopsis thaliana](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001735.4/) chloroplast genome assembly (see "annotations" directory)
 4. Format longest sequences for downstream analysis
-5. Create bifurcating tree using [MAFFT](https://mafft.cbrc.jp/)
-6. Create inputs file for cactus that has the tree and file paths to sequences
-7. Create alignments using [cactus-pangenome](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md)
-8. Evalute alignments with tube maps using [sequenceTubeMap](https://vgteam.github.io/sequenceTubeMap/) and the cactus output vg file in the "chrom_alignments" sub-directory
+5. Create an inputs file for cactus that has the names and file paths to sequences
+6. Create alignments using [cactus-pangenome](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md)
+7. Evalute alignments with tube maps using [sequenceTubeMap](https://vgteam.github.io/sequenceTubeMap/) and the cactus output vg file in the "chrom_alignments" sub-directory
 
 ## Notes
 
@@ -44,12 +43,6 @@ There are two genes unique to A. thaliana (psbZ, psbB) and four genes unique to 
 
 There needs to be separate fasta files for each genome (for cactus) with the same header for each chloroplast sequence (for sequenceTubeMap). The headers for the chloroplast sequences cannot be only numeric values, since this results in an error when running cactus-hal2maf.
 
-There needs to be a combined fasta file with all the chloroplast sequences (for MAFFT) with the file name for each genome as the sequence header (for cactus). This formatting will result in a tree with the appropriate naming for input to cactus.
-
-### Step 5
-
-The input tree to cactus needs to be a bifurcating tree, which can be made by MAFFT using UPGMA rather than NJ methods.
-
-### Step 8
+### Step 7
 
 Only a portion of the chloroplast sequences can be visualized, so this part of the analysis will need to be interactive.
