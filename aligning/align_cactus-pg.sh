@@ -3,9 +3,11 @@
 #$ -m abe
 #$ -r n
 #$ -N align_cactus-pg_jobOutput
+#$ -q largemem
 
 # script to run cactus
 # usage: qsub align_cactus-pg.sh
+## job 838516
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
