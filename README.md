@@ -2,8 +2,8 @@
 
 - Project: JRS Chloroplasts Analysis
 - Contact: Jeanne Romero-Severson
-- Analyst: Elizabeth Brooks
-- Date: 25 September 2024
+- Analysts: Elizabeth Brooks & Sheri Sanders
+- Date: 26 September 2024
 
 ## Code
 
