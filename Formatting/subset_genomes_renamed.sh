@@ -34,7 +34,7 @@ while read line; do
 		outID=$(cat $indexFile | grep "$line" | cut -f1)
 		outSpec=$(cat $indexFile | grep "$line" | cut -f6 | sed "s/Juglans /J/g" | tr -dc '[:alnum:]')
 		# create output name
-		outName=$outSpec"."$outID
+		outName=$outSpec"_"$outID
 		# output new name with file name for the pangenome cactus inputs file
 		echo $outName" "$outDir"/"$outName".fa" >> $outDir"/inputs_pangenome_cactus.txt"
 	else # body
