@@ -8,9 +8,9 @@
 # script to run cactus
 # usage: qsub hal2maf_cactus-pg.sh analysisType
 # usage ex: qsub hal2maf_cactus-pg.sh all
-## job 
+## job 846268
 # usage ex: qsub hal2maf_cactus-pg.sh subset
-## job 
+## job 846269
 
 # retrieve analysis type
 analysisType=$1

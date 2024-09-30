@@ -47,4 +47,5 @@ def maf_to_phylip(maf_file, output_file):
             phy_fh.write("\n")  # Add a blank line between blocks of 100 bp
 
 # Example usage
-maf_to_phylip("/home/sheri/Downloads/chloroplasts-pg.maf", "/home/sheri/Downloads/cactus_output_multiline.phy")
+#maf_to_phylip("/home/sheri/Downloads/chloroplasts-pg.maf", "/home/sheri/Downloads/cactus_output_multiline.phy")
+maf_to_phylip("/Users/bamflappy/GBCF/JRS/chloroplast/aligned_cactus-pg_subset/chloroplasts-pg.maf", "/Users/bamflappy/GBCF/JRS/chloroplast/aligned_cactus-pg_subset/cactus_output_multiline.phy")

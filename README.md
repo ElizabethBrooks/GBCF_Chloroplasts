@@ -16,8 +16,9 @@ Click [here](https://github.com/ElizabethBrooks/GBCF_Chloroplasts) for the analy
 3. Investigate longest sequence gene content and order using [MCScanX](https://github.com/wyp1125/MCScanX) and the NCBI reference [Arabadopsis thaliana](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001735.4/) chloroplast genome assembly (see "annotations" directory)
 4. Format longest sequences for downstream analysis
 5. Create an inputs file for cactus that has the names and file paths to sequences
-6. Create alignments using [cactus-pangenome](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md)
+6. Create alignments using [cactus-pangenome](https://github.com/ComparativeGenomicsToolkit/cactus/blob/master/doc/pangenome.md) and convert the hal files using cactus-hal2maf
 7. Evalute alignments with tube maps using [sequenceTubeMap](https://vgteam.github.io/sequenceTubeMap/) and the cactus output vg file in the "chrom_alignments" sub-directory
+8. convert the maf file to phy using the maf2phy.py script, then convert the phy to newick using the phy2newick.sh script with FastTree. Also, visualize the newlick files using TreeDyn from https://www.phylogeny.fr/ and Tree Viewer from http://etetoolkit.org/treeview/
 
 ## Notes
 
