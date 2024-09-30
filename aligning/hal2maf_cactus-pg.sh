@@ -6,8 +6,14 @@
 #$ -q largemem
 
 # script to run cactus
-# usage: qsub hal2maf_cactus-pg.sh
-## job 838543
+# usage: qsub hal2maf_cactus-pg.sh analysisType
+# usage ex: qsub hal2maf_cactus-pg.sh all
+## job 
+# usage ex: qsub hal2maf_cactus-pg.sh subset
+## job 
+
+# retrieve analysis type
+analysisType=$1
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
@@ -19,7 +25,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_cactus-pg"
+alignOut=$outputsPath"/aligned_cactus-pg_"$analysisType
 
 # move to the new directory
 cd $alignOut

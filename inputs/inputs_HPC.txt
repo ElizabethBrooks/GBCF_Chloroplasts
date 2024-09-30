@@ -3,6 +3,6 @@ thaliana: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Arabidopsis_thaliana_chlorop
 ailanthifolia: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglans_ailanthifolia_chloroplast_NC_046433.1_sequence.fa
 long: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglanschlorosaln_long.flt.fa
 cactus_progressive: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_progressive_cactus.txt
-cactus_pangenome: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus.txt
+cactus_pangenome_all: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus.txt
 cactus_pangenome_subset: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_subset.txt
 cactus_ref: Jailantifolia_136
