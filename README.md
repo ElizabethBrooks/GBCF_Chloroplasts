@@ -3,7 +3,7 @@
 - Project: JRS Chloroplasts Analysis
 - Contact: Jeanne Romero-Severson
 - Analysts: Elizabeth Brooks & Sheri Sanders
-- Date: 26 September 2024
+- Date: 30 September 2024
 
 ## Code
 
@@ -11,7 +11,7 @@ Click [here](https://github.com/ElizabethBrooks/GBCF_Chloroplasts) for the analy
 
 ## Analysis Workflow Steps
 
-1. Filter by length and identify longest sequence for potential reference
+1. Filter by length and identify longest sequence for potential reference and plot the distribution sequence lengths
 2. Format input sequences and create input files for MCScanX
 3. Investigate longest sequence gene content and order using [MCScanX](https://github.com/wyp1125/MCScanX) and the NCBI reference [Arabadopsis thaliana](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001735.4/) chloroplast genome assembly (see "annotations" directory)
 4. Format longest sequences for downstream analysis
@@ -24,7 +24,11 @@ Click [here](https://github.com/ElizabethBrooks/GBCF_Chloroplasts) for the analy
 
 ### Step 1
 
-We selected a potential reference genome (Juglan ailanthifolia) from the set of chloroplast sequences. Our first step was to filter the set of chloroplast sequences by length. Please see the plot showing the distribution of sequence lengths. There are 44 sequences that are 159,700 bases or longer. The remaining 121 sequences are 115,343 bases or shorter. The longest chloroplast sequence in our data set was from Juglans ailanthifolia with a length of 160,400 bases, which was the longest chloroplast sequence in the set. 
+Our first step was to filter the set of chloroplast sequences by length. Please see the plot showing the distribution of sequence lengths. 
+
+There are 44 sequences that are 159,700 bases or longer. The remaining 121 sequences are 115,343 bases or shorter. 
+
+The longest chloroplast sequence in our data set was from Juglans ailanthifolia with a length of 160,400 bases. 
 
 ### Step 2
 
@@ -32,7 +36,7 @@ The protein sequences for the chloroplast genes of the potential longest referen
 
 The headers for the input chloroplast gene protein seqeunces to MCScanX should be simple so that the resulting plots are clear and easy to read.
 
-There needs to be a separate input file for each different type of plot that is created using MCScanX.
+Note that there needs to be a separate input file for each different type of plot that is created using MCScanX.
 
 ### Step 3
 
@@ -42,7 +46,11 @@ There are two genes unique to A. thaliana (psbZ, psbB) and four genes unique to 
 
 ### Step 4
 
-There needs to be separate fasta files for each genome (for cactus) with the same header for each chloroplast sequence (for sequenceTubeMap). The input sample cannot be prefixed by the given reference using a period (e.g., Jailantifolia.136). "This is not supported by this version of Cactus, so one of these samples needs to be renamed to continue." Additionally, the headers for the chloroplast sequences cannot be only numeric values, since this results in an error when running cactus-hal2maf.
+There needs to be separate fasta files for each genome (for cactus) with the same header for each chloroplast sequence (for sequenceTubeMap). 
+
+The input sample cannot be prefixed by the given reference using a period (e.g., Jailantifolia.136). "This is not supported by this version of Cactus, so one of these samples needs to be renamed to continue." 
+
+Additionally, the headers for the chloroplast sequences cannot be only numeric values, since this results in an error when running cactus-hal2maf.
 
 ### Step 7
 
