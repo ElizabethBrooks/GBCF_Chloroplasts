@@ -1,0 +1,16 @@
+Jmandshurica_1 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jmandshurica_1.fa
+Jmandshurica_4 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jmandshurica_4.fa
+Jmandshurica_7 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jmandshurica_7.fa
+Jhopeiensis_10 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jhopeiensis_10.fa
+Jcathayensis_13 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcathayensis_13.fa
+Jcathayensis_16 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcathayensis_16.fa
+Jailantifolia_127 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jailantifolia_127.fa
+Jmandshurica_128 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jmandshurica_128.fa
+Jmandshurica_129 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jmandshurica_129.fa
+Jmandshurica_130 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jmandshurica_130.fa
+Jcinerea_131 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcinerea_131.fa
+Jcinerea_132 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcinerea_132.fa
+Jcinerea_133 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcinerea_133.fa
+Jcathayensis_134 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcathayensis_134.fa
+Jcathayensis_135 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jcathayensis_135.fa
+Jailantifolia_136 /scratch365/ebrooks5/GBCF/JRS/chloroplast/data/chloroplast_genomes_renamed/Jailantifolia_136.fa

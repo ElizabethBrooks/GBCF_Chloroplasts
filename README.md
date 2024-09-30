@@ -41,7 +41,7 @@ There are two genes unique to A. thaliana (psbZ, psbB) and four genes unique to 
 
 ### Step 4
 
-There needs to be separate fasta files for each genome (for cactus) with the same header for each chloroplast sequence (for sequenceTubeMap). The input sample cannot be prefixed by the given reference using a period. "This is not supported by this version of Cactus, so one of these samples needs to be renamed to continue." Additionally, the headers for the chloroplast sequences cannot be only numeric values, since this results in an error when running cactus-hal2maf.
+There needs to be separate fasta files for each genome (for cactus) with the same header for each chloroplast sequence (for sequenceTubeMap). The input sample cannot be prefixed by the given reference using a period (e.g., Jailantifolia.136). "This is not supported by this version of Cactus, so one of these samples needs to be renamed to continue." Additionally, the headers for the chloroplast sequences cannot be only numeric values, since this results in an error when running cactus-hal2maf.
 
 ### Step 7
 

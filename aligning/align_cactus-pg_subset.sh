@@ -2,19 +2,18 @@
 #$ -M ebrooks5@nd.edu
 #$ -m abe
 #$ -r n
-#$ -N align_cactus-pg_jobOutput
+#$ -N align_cactus-pg_subset_jobOutput
 #$ -q largemem
 
 # script to run cactus
-# usage: qsub align_cactus-pg.sh
-## job 838516
-## job 846238
+# usage: qsub align_cactus-pg_subset.sh
+## job 
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
 
 # retrieve inputs
-inputsPath=$(grep "cactus_pangenome:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_pangenome://g")
+inputsPath=$(grep "cactus_pangenome_subset:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_pangenome_subset://g")
 
 # retrieve inputs
 inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_ref://g")
@@ -23,7 +22,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_cactus-pg"
+alignOut=$outputsPath"/aligned_cactus-pg_subset"
 mkdir $alignOut
 #Check if the folder already exists
 if [ $? -ne 0 ]; then
