@@ -8,7 +8,7 @@
 # script to run cactus
 # usage: qsub align_cactus-pg.sh
 ## job 838516
-## job
+## job 846219
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
