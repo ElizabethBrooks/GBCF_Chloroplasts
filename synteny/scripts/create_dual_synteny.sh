@@ -7,10 +7,10 @@
 compTag="arabadopsis_ailanthifolia"
 
 # retrieve inputs
-cntlFile="/Users/bamflappy/Repos/GBCF_Chloroplasts/InputData/inputs_dual_synteny.ctl"
+cntlFile=../../"inputs/inputs_dual_synteny.ctl"
 
 # setup outputs directory
-outputFolder=$(grep "outputs:" ../InputData/inputs_local.txt | tr -d " " | sed "s/outputs://g")
+outputFolder=$(grep "outputs:" ../../"inputs/inputs_local.txt" | tr -d " " | sed "s/outputs://g")
 outputFolder=$outputFolder"/orthology_MCScanX"
 
 # setup outputs subdirectory

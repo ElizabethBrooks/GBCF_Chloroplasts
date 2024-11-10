@@ -6,17 +6,17 @@
 # usage: bash search_MCScanX_pipeline.sh
 
 # retrieve inputs
-queryFileIn=$(grep "ailanthifoliaPep:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaPep://g")
-dbFileIn=$(grep "thalianaPep:" ../InputData/inputs_local.txt | tr -d " " | sed "s/thalianaPep://g")
-queryFileFeat=$(grep "ailanthifoliaFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaFeat://g")
-dbFileFeat=$(grep "thalianaFeat:" ../InputData/inputs_local.txt | tr -d " " | sed "s/thalianaFeat://g")
+queryFileIn=$(grep "ailanthifoliaPep:" ../inputs/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaPep://g")
+dbFileIn=$(grep "thalianaPep:" ../inputs/inputs_local.txt | tr -d " " | sed "s/thalianaPep://g")
+queryFileFeat=$(grep "ailanthifoliaFeat:" ../inputs/inputs_local.txt | tr -d " " | sed "s/ailanthifoliaFeat://g")
+dbFileFeat=$(grep "thalianaFeat:" ../inputs/inputs_local.txt | tr -d " " | sed "s/thalianaFeat://g")
 
 # retrieve software location
-softLoc="/Users/bamflappy/MCScanX-master/downstream_analyses"
+softLoc=$(grep "mcscanx:" ../inputs/inputs_local.txt | tr -d " " | sed "s/mcscanx://g")
 
 # setup outputs directory
-outputFolder=$(grep "outputs:" ../InputData/inputs_local.txt | tr -d " " | sed "s/outputs://g")
-outputFolder=$outputFolder"/orthology_MCScanX"
+outputFolder=$(grep "outputs:" ../inputs/inputs_local.txt | tr -d " " | sed "s/outputs://g")
+outputFolder=$outputFolder"/synteny_MCScanX"
 
 # make output directory
 mkdir $outputFolder
@@ -50,6 +50,9 @@ cat $dbFileIn | sed "s/^.*gene=/>/g" | sed "s/] \[locus_tag.*$/_atC/g" > $dbFile
 # move to the scripts directory
 cd scripts
 
+# get currect directory path
+scriptsDir=$(pwd)
+
 # status message
 echo "Beginning analysis..."
 
@@ -60,12 +63,18 @@ cp $dbFileFeat $outputFolder"/thaliana.gff"
 # combine the gff files for MCScanX
 cat $outputFolder"/"*.gff > $outputFolder"/thaliana_ailanthifolia_master.gff"
 
+# status message
+echo "Creating blastable databases..."
+
 # 15. Build the BLASTP database and place it in the ‘ncbiDB’ folder
 # make the first blast able database
 bash makeDB_blast.sh $dbFile $outputFolder"/thaliana_db" "prot"
 
 # make the second blast able database
 bash makeDB_blast.sh $queryFile $outputFolder"/ailanthifolia_db" "prot"
+
+# status message
+echo "Running BLAST..."
 
 # 16. Execute all-against-all BLASTP running all the desired pairwise genomes with an E-value cutoff of 1 × 10−10 and the best five non-self-hits reported in each target genome.
 bash search_blast.sh $queryFile $outputFolder"/thaliana_db" $outputFolder $outputFolder"/thaliana_ailanthifolia.blast" 5 "blastp"
@@ -89,17 +98,40 @@ cp $outputFolder"/thaliana_ailanthifolia_master.blast" $dataFolder"/master.blast
 # move to software location
 cd $softLoc
 
+# status message
+echo "Running MCScanX..."
+
 # create MCScanX files for downstream analysis
-MCScanX data/master
+./MCScanX  $dataFolder"/master"
+
+# move to downstream analysis directory
+cd downstream_analyses
+
+# setup MCScanX outputs directory
+dataFolder=$outputFolder"/data"
+
+# setup inputs
+circleCntl="/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/inputs_circle.ctl"
+dualCntl="/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/inputs_dual_synteny.ctl"
+dotCntl="/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/inputs_dot.ctl"
+
+# status message
+echo "Creating circle plot..."
+
+# create a circle plot
+java circle_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $circleCntl -o $dataFolder"/circle.png"
+
+# status message
+echo "Creating dual synteny plot..."
 
 # create dual synteny plots
-bash create_dual_synteny.sh
+java dual_synteny_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dualCntl -o $dataFolder"/dual_synteny.png"
+
+# status message
+echo "Creating dot plot..."
 
 # create dot plots
-bash create_dot.sh
-
-# create circle plots
-bash create_circle.sh
+java dot_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dotCntl -o $dataFolder"/dot.png"
 
 # status message
 echo "Analysis complete!"
