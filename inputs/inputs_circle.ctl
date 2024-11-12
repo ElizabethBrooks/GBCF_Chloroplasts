@@ -1,2 +1,2 @@
 800
-atC, jaC
+speciesOne, speciesTwo

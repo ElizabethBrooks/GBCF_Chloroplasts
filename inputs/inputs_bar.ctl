@@ -1,4 +1,4 @@
 550
 450
-atC
-jaC
+speciesOne
+speciesTwo

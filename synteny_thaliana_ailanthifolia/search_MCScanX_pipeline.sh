@@ -115,23 +115,29 @@ circleCntl="/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/inputs_circle.ctl"
 dualCntl="/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/inputs_dual_synteny.ctl"
 dotCntl="/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/inputs_dot.ctl"
 
+# TO-DO: double check order of species
+# update input control files with species tags
+cat $circleCntl | sed "s/speciesOne/atC/g" | sed "s/speciesTwo/jaC/g" > $dataFolder"/inputs_circle.ctl"
+cat $dualCntl | sed "s/speciesOne/atC/g" | sed "s/speciesTwo/jaC/g" > $dataFolder"/inputs_dual_synteny.ctl"
+cat $dotCntl | sed "s/speciesOne/atC/g" | sed "s/speciesTwo/jaC/g" > $dataFolder"/inputs_dot.ctl"
+
 # status message
 echo "Creating circle plot..."
 
 # create a circle plot
-java circle_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $circleCntl -o $dataFolder"/circle.png"
+java circle_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dataFolder"/inputs_circle.ctl" -o $dataFolder"/circle.png"
 
 # status message
 echo "Creating dual synteny plot..."
 
 # create dual synteny plots
-java dual_synteny_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dualCntl -o $dataFolder"/dual_synteny.png"
+java dual_synteny_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dataFolder"/inputs_dual_synteny.ctl" -o $dataFolder"/dual_synteny.png"
 
 # status message
 echo "Creating dot plot..."
 
 # create dot plots
-java dot_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dotCntl -o $dataFolder"/dot.png"
+java dot_plotter -g $dataFolder"/master.gff" -s $dataFolder"/master.collinearity" -c $dataFolder"/inputs_dot.ctl" -o $dataFolder"/dot.png"
 
 # status message
 echo "Analysis complete!"

@@ -2,14 +2,7 @@
 
 # script to extract CDS and protein sequences from a chloroplast fasta using a gff created with CHLOROBOX online
 # usage: bash extract_features.sh speciesTag
-# test
-# usage ex: bash extract_features.sh Jailantifolia_136
-# problematic set
-# usage ex: bash extract_features.sh Jcinerea_138
-# usage ex: bash extract_features.sh Jcinerea_140
-# usage ex: bash extract_features.sh JcinereaNB_142
-# usage ex: bash extract_features.sh JcinereaNB_144
-# usage ex: bash extract_features.sh JcinereaNB_145
+# usage ex: for i in /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/*GFF3.gff3; do species=$(basename $i | sed "s/JRS_chloro_long_//g" | sed "s/_GFF3.gff3//g"); bash extract_features.sh $species; done
 
 # retrieve input species
 speciesTag=$1
