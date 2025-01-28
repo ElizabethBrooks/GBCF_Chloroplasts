@@ -1,3 +1,17 @@
+### Installation
+
+<b>First,</b> download this GitHub repository using the git clone command in the terminal as follows.
+
+To download the code onto a local computer or server space, click the green <i>< > Code</i> button and copy the link. Then, using the HTTPS web URL in the terminal:
+
+git clone https://github.com/ElizabethBrooks/GBCF_Chloroplasts.git
+
+Alternatively, using SSH:
+
+git clone git@github.com:ElizabethBrooks/GBCF_Chloroplasts.git
+
+The latest version of this application may also be downloaded from this repository by clicking the green <i>< > Code</i> button near the top of the page, and then clicking <i>Download ZIP</i>.
+
 ### Analysis Workflow
 
 1. Filter by length and identify longest sequence for potential reference. Also, plot the distribution sequence lengths
