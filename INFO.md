@@ -25,6 +25,10 @@ There are 44 sequences that are 159,700 bases or longer. The remaining 121 seque
 <b>Figure 2. Synteny of the Longest Chloroplast Genome with <i>Arabidopsis thaliana</i></b>
 The gene content and order between the chloroplast sequences was very similar. There were two genes unique to A. thaliana (psbZ, psbB) and four genes unique to <i>J. ailanthifolia</i> (lhbA, psi, infA, ycf15). The psaB and psaA genes were tandem in both species.
 
+![Figure 3](figures/figure7_NB_WGS_synteny.png)
+
+<b>Figure 3. Chloroplast Genomes with Discordant Regions.</b> Synteny plots comparing the locations of chloroplast genes in two example chloroplast genomes with the longest genome. The example chloroplast genomes did not align correctly with the complete set of genomes. (A) Dot plot comparing locations of chloroplast genes in <i>J. cinerea</i> NB and the longest chloroplast genome. (B)  Synteny plot comparing locations of chloroplast genes in <i>J. cinerea</i> NB and the longest chloroplast genome. (C) Dot plot comparing locations of chloroplast genes in <i>J. nigra</i> WGS and the longest chloroplast genome. (D) Synteny plot comparing locations of chloroplast genes in <i>J. nigra</i> WGS and the longest chloroplast genome. Synteny plots for the complete set of chloroplasts showed some rearrangements of genes in the discordant regions, which confirmed the presence of inversions of the IRb and IRa in a subset of our chloroplast sequences.
+
 ## References
 
 1. Wang, Y., Tang, H., Debarry, J. D., Tan, X., Li, J., Wang, X., Lee, T. H., Jin, H., Marler, B., Guo, H., Kissinger, J. C., & Paterson, A. H. (2012). MCScanX: a toolkit for detection and evolutionary analysis of gene synteny and collinearity. Nucleic acids research, 40(7), e49. https://doi.org/10.1093/nar/gkr1293
