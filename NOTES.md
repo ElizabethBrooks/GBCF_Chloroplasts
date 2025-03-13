@@ -73,6 +73,52 @@ Genes in the discordant region:
 
 The synteny plots and data have been uploaded to the GBCF_JRS_Chloroplasts/synteny box folder for all of the chloroplast sequences. These include the suspicious sequences with alignment issues (138, 140, 142, 144, 145, 148, 149, 151, 154, 156, 158, 160, 161, 163). 
 
+##### Identifying alignment regions
+
+We need to split each genome into four parts using single copy genes and ensuring that the IRb and IRa regions are not identical:
+- LSC (from start to LSC): From psbA through rps19 (complete LSC section)
+- IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
+- SSC: From ndhF through ndhA (complete SSC section)
+- IRb (from IRb to end): From ndhA through rpl2 (IRb + neighboring SSC region)
+
+###### Investigating discordant regions
+
+Need to reverse complement the sequences in the SSC region, then create updated fasta and bed files. 
+
+Test blast (refernce):
+```
+cat /Users/bamflappy/GBCF/JRS/chloroplast/regions/region02.txt | grep "_136" | grep "ndhF_" | sed "s/^.*_136/chloroplast/g" > /Users/bamflappy/GBCF/JRS/chloroplast/tests/136_ndhF.bed
+bedtools getfasta -fi /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*_136.fa -bed /Users/bamflappy/GBCF/JRS/chloroplast/tests/136_ndhF.bed -fo /Users/bamflappy/GBCF/JRS/chloroplast/tests/136_ndhF.fa.out
+```
+
+Test blast (discordant example):
+```
+cat /Users/bamflappy/GBCF/JRS/chloroplast/regions/region02.txt | grep "_142" | grep "ndhF_" | sed "s/^.*_142/chloroplast/g" > /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.bed
+bedtools getfasta -fi /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*_142.fa -bed /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.bed -fo /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.fa.out
+```
+
+Test reverse complement blast (discordant example):
+```
+cat /Users/bamflappy/GBCF/JRS/chloroplast/regions/region02.txt | grep "_142" | grep "ndhF_" | sed "s/^.*_142/chloroplast/g" > /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.bed
+bedtools getfasta -fi /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*_142.fa -bed /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.bed -fo /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.fa.out
+```
+
+###### Discordant sequneces
+region03_142
+region03_144
+region03_145
+region03_148
+region03_163
+region03_149
+region03_151
+region03_154
+region03_156
+region03_158
+region03_160
+region03_138
+region03_140
+region03_161
+
 ##### Formatting
 
 There needs to be separate fasta files for each genome (for cactus) with the same header for each chloroplast sequence (for sequenceTubeMap). 
