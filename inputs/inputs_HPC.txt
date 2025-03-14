@@ -9,4 +9,5 @@ cactus_pangenome_LSC: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/input
 cactus_pangenome_IRa: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_IRa.txt
 cactus_pangenome_SSC: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_SSC.txt
 cactus_pangenome_IRb: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_IRb.txt
+cactus_pangenome_oriented: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_oriented.txt
 cactus_ref: Jailantifolia_136

@@ -28,6 +28,9 @@
 ## job 1426174
 # usage ex: qsub align_cactus-pg.sh IRb
 ## job 1426175
+# reoriented test
+# usage ex: qsub align_cactus-pg.sh oriented
+## job 
 
 # retrieve analysis type
 analysisType=$1
