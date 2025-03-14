@@ -12,13 +12,13 @@
 # usage ex: qsub align_cactus-pg.sh subset
 ## job 846240
 # usage ex: qsub align_cactus-pg.sh LSC
-## job 
+## job 1426164
 # usage ex: qsub align_cactus-pg.sh IRa
-## job 
+## job 1426165
 # usage ex: qsub align_cactus-pg.sh SSC
-## job 
+## job 1426166
 # usage ex: qsub align_cactus-pg.sh IRb
-## job 
+## job 1426166
 
 # retrieve analysis type
 analysisType=$1
