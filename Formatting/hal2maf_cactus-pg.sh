@@ -11,9 +11,22 @@
 ## job 846268
 # usage ex: qsub hal2maf_cactus-pg.sh subset
 ## job 846269
+# usage ex: qsub hal2maf_cactus-pg.sh oriented
+## job 
+# usage ex: qsub hal2maf_cactus-pg.sh LSC
+## job 
+# usage ex: qsub hal2maf_cactus-pg.sh IRa
+## job 
+# usage ex: qsub hal2maf_cactus-pg.sh SSC
+## job 
+# usage ex: qsub hal2maf_cactus-pg.sh IRb
+## job 
 
 # retrieve analysis type
 analysisType=$1
+
+# setup outputs name
+outputsName="chloroplasts_pg_"$analysisType
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
@@ -25,7 +38,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_cactus-pg_"$analysisType
+alignOut=$outputsPath"/aligned_"$analysisType
 
 # move to the new directory
 cd $alignOut
@@ -37,7 +50,7 @@ source $softEnv
 echo "Beginning analysis..."
 
 # To run:
-cactus-hal2maf $alignOut"/js" $alignOut"/chloroplasts-pg/chloroplasts-pg.full.hal" $alignOut"/chloroplasts-pg.maf.gz" --refGenome $inputRef --chunkSize 500000 --binariesMode singularity 
+cactus-hal2maf $alignOut"/js" $alignOut"/"$outputsName"/"$outputsName".full.hal" $alignOut"/"$outputsName".maf.gz" --refGenome $inputRef --chunkSize 500000 --binariesMode singularity 
 
 # status message
 echo "Analysis complete!"

@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# script to get the pre defined chloroplast sequence regions
-# We need to split each genome into four parts using single copy genes 
-# and ensuring that the IRb and IRa regions are not identical
-# usage: bash orient_regions.sh sampleID
-# usage ex: bash orient_regions.sh Jailantifolia_136
-# usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*.fa; do species=$(basename $i | cut -d"." -f1); bash orient_regions.sh $species; done
+# script to orient the chlroplast genomes by reverse complementing those with detected inversions
+# usage: bash orient_genomes.sh sampleID
+# usage ex: bash orient_genomes.sh Jailantifolia_136
+# usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*.fa; do species=$(basename $i | cut -d"." -f1); bash orient_genomes.sh $species; done
 
 # retrieve input sample ID
 sampleID="$1"

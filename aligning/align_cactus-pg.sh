@@ -30,7 +30,7 @@
 ## job 1426175
 # reoriented test
 # usage ex: qsub align_cactus-pg.sh oriented
-## job 
+## job 1426178
 
 # retrieve analysis type
 analysisType=$1
