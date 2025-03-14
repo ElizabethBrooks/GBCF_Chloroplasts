@@ -5,4 +5,8 @@ long: /scratch365/ebrooks5/GBCF/JRS/chloroplast/Juglanschlorosaln_long.flt.fa
 cactus_progressive: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_progressive_cactus.txt
 cactus_pangenome_all: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_all.txt
 cactus_pangenome_subset: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_subset.txt
+cactus_pangenome_LSC: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_LSC.txt
+cactus_pangenome_IRa: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_IRa.txt
+cactus_pangenome_SSC: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_SSC.txt
+cactus_pangenome_IRb: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_pangenome_cactus_IRb.txt
 cactus_ref: Jailantifolia_136

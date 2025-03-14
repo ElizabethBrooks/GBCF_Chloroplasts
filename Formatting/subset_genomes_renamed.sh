@@ -4,7 +4,7 @@
 # usage: bash subset_genomes_renamed.sh
 
 # retrieve input file
-inputFile="/Users/bamflappy/GBCF/JRS/chloroplast/Juglanschlorosaln_long.flt.fa"
+inputFile="/Users/bamflappy/GBCF/JRS/chloroplast/formatted/Juglanschlorosaln_long.flt.fa"
 
 # set output file dir
 outDir=$(dirname $inputFile)
