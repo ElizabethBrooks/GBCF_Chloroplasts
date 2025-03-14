@@ -14,11 +14,20 @@
 # usage ex: qsub align_cactus-pg.sh LSC
 ## job 1426164
 # usage ex: qsub align_cactus-pg.sh IRa
-## job 1426165
+## job 1426169
 # usage ex: qsub align_cactus-pg.sh SSC
 ## job 1426166
 # usage ex: qsub align_cactus-pg.sh IRb
 ## job 1426166
+# renamed tests
+# usage ex: qsub align_cactus-pg.sh LSC
+## job 
+# usage ex: qsub align_cactus-pg.sh IRa
+## job 
+# usage ex: qsub align_cactus-pg.sh SSC
+## job 
+# usage ex: qsub align_cactus-pg.sh IRb
+## job 
 
 # retrieve analysis type
 analysisType=$1
@@ -39,7 +48,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_cactus-pg_"$analysisType
+alignOut=$outputsPath"/aligned_"$analysisType
 mkdir $alignOut
 #Check if the folder already exists
 if [ $? -ne 0 ]; then

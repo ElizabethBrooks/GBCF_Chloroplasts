@@ -15,21 +15,15 @@ regionsDir="/Users/bamflappy/GBCF/JRS/chloroplast/filtered"
 genomesDir="/Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed"
 
 # set output directory name
-outputDir="/Users/bamflappy/GBCF/JRS/chloroplast/filtered/chloroplast_regions"
+outputDir="/Users/bamflappy/GBCF/JRS/chloroplast/filtered/chloroplast_regions_renamed"
 
 # create outputs directories
-mkdir $outputDir
-# check if the folder already exists
-if [ $? -ne 0 ]; then
-	echo "The $outputFolder directory already exsists... removing before proceeding."
-	# pre clean up
-	rm -r $outputDir
-	# create outputs directories
-	mkdir $outputDir"/region01_LSC"
-	mkdir $outputDir"/region02_IRa"
-	mkdir $outputDir"/region03_SSC"
-	mkdir $outputDir"/region04_IRb"
-fi
+#mkdir $outputDir
+# create outputs directories
+#mkdir $outputDir"/region01_LSC"
+#mkdir $outputDir"/region02_IRa"
+#mkdir $outputDir"/region03_SSC"
+#mkdir $outputDir"/region04_IRb"
 
 # status message
 echo "Beginning analysis..."
@@ -97,16 +91,16 @@ if [[ $start_ndhA -gt $start_ndhF ]]; then
 	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 else
 	# IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
-	echo "Processing IRa for sample "$sampleID" ..."
+	echo "Processing IRb for sample "$sampleID" ..."
 	# setup the region and gene bed files
-	echo -e "chloroplast\t$start_rps19\t$end_ndhA" > $outputDir"/region02_IRa/"$sampleID".bed"
+	echo -e "chloroplast\t$start_rps19\t$end_ndhA" > $outputDir"/region04_IRb/"$sampleID".bed"
 	# retrieve the region and gene
-	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID".bed" -fo $outputDir"/region02_IRa/"$sampleID".fa.tmp"
+	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID".bed" -fo $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 	# update header
-	cat $outputDir"/region02_IRa/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region02_IRa/"$sampleID".fa"
+	cat $outputDir"/region04_IRb/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region04_IRb/"$sampleID".fa"
 	# clean up
-	rm $outputDir"/region02_IRa/"$sampleID".bed"
-	rm $outputDir"/region02_IRa/"$sampleID".fa.tmp"
+	rm $outputDir"/region04_IRb/"$sampleID".bed"
+	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 
 	# status message
 	echo "Retrieving inversed SSC for sample "$sampleID" ..."
@@ -125,16 +119,16 @@ else
 	rm $outputDir"/region03_SSC/"$sampleID".fa.tmp"
 
 	# IRb: From ndhA through rpl2 (IRb + neighboring SSC region)
-	echo "Processing IRb for sample "$sampleID" ..."
+	echo "Processing IRa for sample "$sampleID" ..."
 	# setup the region bed file
-	echo -e "chloroplast\t$start_ndhF\t$end_IRb" > $outputDir"/region04_IRb/"$sampleID".bed"
+	echo -e "chloroplast\t$start_ndhF\t$end_IRb" > $outputDir"/region02_IRa/"$sampleID".bed"
 	# retrieve the region
-	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID".bed" -fo $outputDir"/region04_IRb/"$sampleID".fa.tmp"
+	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID".bed" -fo $outputDir"/region02_IRa/"$sampleID".fa.tmp"
 	# update header
-	cat $outputDir"/region04_IRb/"$sampleID".fa.tmp" | sed "s/^>.*/>IRb/g" > $outputDir"/region04_IRb/"$sampleID".fa"
+	cat $outputDir"/region02_IRa/"$sampleID".fa.tmp" | sed "s/^>.*/>IRb/g" > $outputDir"/region02_IRa/"$sampleID".fa"
 	# clean up
-	rm $outputDir"/region04_IRb/"$sampleID".bed"
-	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
+	rm $outputDir"/region02_IRa/"$sampleID".bed"
+	rm $outputDir"/region02_IRa/"$sampleID".fa.tmp"
 fi
 
 # status message
