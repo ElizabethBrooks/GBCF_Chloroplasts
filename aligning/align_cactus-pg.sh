@@ -21,13 +21,13 @@
 ## job 1426166
 # renamed tests
 # usage ex: qsub align_cactus-pg.sh LSC
-## job 
+## job 1426172
 # usage ex: qsub align_cactus-pg.sh IRa
-## job 
+## job 1426173
 # usage ex: qsub align_cactus-pg.sh SSC
-## job 
+## job 1426174
 # usage ex: qsub align_cactus-pg.sh IRb
-## job 
+## job 1426175
 
 # retrieve analysis type
 analysisType=$1
