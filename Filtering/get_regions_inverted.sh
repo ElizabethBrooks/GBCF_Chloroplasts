@@ -3,9 +3,9 @@
 # script to get the pre defined chloroplast sequence regions
 # We need to split each genome into four parts using single copy genes 
 # and ensuring that the IRb and IRa regions are not identical
-# usage: bash get_regions.sh sampleID
-# usage ex: bash get_regions.sh Jailantifolia_136
-# usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*.fa; do species=$(basename $i | cut -d"." -f1); bash get_regions.sh $species; done
+# usage: bash get_regions_inverted.sh sampleID
+# usage ex: bash get_regions_inverted.sh Jailantifolia_136
+# usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*.fa; do species=$(basename $i | cut -d"." -f1); bash get_regions_inverted.sh $species; done
 
 # retrieve input sample ID
 sampleID="$1"
@@ -15,7 +15,7 @@ regionsDir="/Users/bamflappy/GBCF/JRS/chloroplast/filtered"
 genomesDir="/Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed"
 
 # set output directory name
-outputDir="/Users/bamflappy/GBCF/JRS/chloroplast/filtered/chloroplast_regions_renamed"
+outputDir="/Users/bamflappy/GBCF/JRS/chloroplast/filtered/chloroplast_regions_renamed_inverted"
 
 # create outputs directories
 mkdir $outputDir
@@ -90,24 +90,18 @@ if [[ $start_ndhA -gt $start_ndhF ]]; then
 	rm $outputDir"/region04_IRb/"$sampleID".bed"
 	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 else
+	# To-do: consider going from end_rps19 to end_ndhA
 	# IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
-	echo "Processing IRa for sample "$sampleID" ..."
+	echo "Processing IRb for sample "$sampleID" ..."
 	# setup the region and gene bed files
-	echo -e "chloroplast\t$start_rps19\t$start_ndhA" > $outputDir"/region02_IRa/"$sampleID".bed"
-	echo -e "chloroplast\t$start_ndhF\t$end_ndhF" > $outputDir"/region02_IRa/"$sampleID"_ndhF.bed"
+	echo -e "chloroplast\t$start_rps19\t$end_ndhA" > $outputDir"/region04_IRb/"$sampleID".bed"
 	# retrieve the region and gene
-	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID".bed" -fo $outputDir"/region02_IRa/"$sampleID".fa"
-	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID"_ndhF.bed" -fo $outputDir"/region02_IRa/"$sampleID"_ndhF.fa"
-	# combine region and gene sequences
-	cat $outputDir"/region02_IRa/"$sampleID".fa" | tr -d "\n" > $outputDir"/region02_IRa/"$sampleID".fa.tmp"
-	tail -n+2 $outputDir"/region02_IRa/"$sampleID"_ndhF.fa" >> $outputDir"/region02_IRa/"$sampleID".fa.tmp"
+	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID".bed" -fo $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 	# update header
-	cat $outputDir"/region02_IRa/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region02_IRa/"$sampleID".fa"
+	cat $outputDir"/region04_IRb/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region04_IRb/"$sampleID".fa"
 	# clean up
-	rm $outputDir"/region02_IRa/"$sampleID".bed"
-	rm $outputDir"/region02_IRa/"$sampleID"_ndhF.bed"
-	rm $outputDir"/region02_IRa/"$sampleID".fa.tmp"
-	rm $outputDir"/region02_IRa/"$sampleID"_ndhF.fa"
+	rm $outputDir"/region04_IRb/"$sampleID".bed"
+	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 
 	# status message
 	echo "Retrieving inversed SSC for sample "$sampleID" ..."
@@ -126,23 +120,16 @@ else
 	rm $outputDir"/region03_SSC/"$sampleID".fa.tmp"
 
 	# IRb: From ndhA through rpl2 (IRb + neighboring SSC region)
-	echo "Processing IRb for sample "$sampleID" ..."
+	echo "Processing IRa for sample "$sampleID" ..."
 	# setup the region bed file
-	echo -e "chloroplast\t$end_ndhF\t$end_IRb" > $outputDir"/region04_IRb/"$sampleID".bed"
-	echo -e "chloroplast\t$start_ndhA\t$end_ndhA" > $outputDir"/region04_IRb/"$sampleID"_ndhA.bed"
-	# retrieve the region and gene
-	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID".bed" -fo $outputDir"/region04_IRb/"$sampleID".fa"
-	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID"_ndhA.bed" -fo $outputDir"/region04_IRb/"$sampleID"_ndhA.fa"
-	# combine region and gene sequences
-	cat $outputDir"/region04_IRb/"$sampleID".fa" | tr -d "\n" > $outputDir"/region04_IRb/"$sampleID".fa.tmp"
-	tail -n+2 $outputDir"/region04_IRb/"$sampleID"_ndhA.fa" >> $outputDir"/region04_IRb/"$sampleID".fa.tmp"
+	echo -e "chloroplast\t$start_ndhF\t$end_IRb" > $outputDir"/region02_IRa/"$sampleID".bed"
+	# retrieve the region
+	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID".bed" -fo $outputDir"/region02_IRa/"$sampleID".fa.tmp"
 	# update header
-	cat $outputDir"/region04_IRb/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region04_IRb/"$sampleID".fa"
+	cat $outputDir"/region02_IRa/"$sampleID".fa.tmp" | sed "s/^>.*/>IRb/g" > $outputDir"/region02_IRa/"$sampleID".fa"
 	# clean up
-	rm $outputDir"/region04_IRb/"$sampleID".bed"
-	rm $outputDir"/region04_IRb/"$sampleID"_ndhA.bed"
-	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
-	rm $outputDir"/region04_IRb/"$sampleID"_ndhA.fa"
+	rm $outputDir"/region02_IRa/"$sampleID".bed"
+	rm $outputDir"/region02_IRa/"$sampleID".fa.tmp"
 fi
 
 # status message

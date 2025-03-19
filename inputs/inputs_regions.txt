@@ -1,0 +1,4 @@
+LSC: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_regions_LSC.txt
+IRa: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_regions_IRa.txt
+SSC: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_regions_SSC.txt
+IRb: /afs/crc.nd.edu/group/hoth/eBrooks/GBCF_Chloroplasts/inputs/inputs_regions_IRb.txt

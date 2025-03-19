@@ -15,11 +15,11 @@ inputFeat=$2
 
 # name and create outputs dir
 outputsDir=$(dirname $inputFeat)
-outputsDir=$outputsDir"/formatted"
+outputsDir=$outputsDir"/formatted_blatX_hits"
 mkdir $outputsDir
 
 # set output file
 outputFeat=$outputsDir"/"$speciesTag"_chloroplast_genes.gff"
 
 # retrieve chloroplast protein coding gene features
-cat $inputFeat | awk -F '\t' '$3=="gene" && match($9, "gene_biotype=protein_coding")' | cut -f4,5,9 | sed "s/^/$speciesTag\t/g" | sed "s/ID=.*gene=//g" | sed "s/;.*$/_$speciesTag/g" | awk -v OFS='\t' '{print $1,$4,$2,$3}' > $outputFeat
+cat $inputFeat | awk -F '\t' '$3=="gene" && match($9, "gene_biotype=protein_coding")' | grep "blatX_hit" | cut -f4,5,9 | sed "s/^/$speciesTag\t/g" | sed "s/ID=.*gene=//g" | sed "s/;.*$/_$speciesTag/g" | awk -v OFS='\t' '{print $1,$4,$2,$3}' > $outputFeat

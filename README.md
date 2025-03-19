@@ -14,6 +14,8 @@ The latest version of this application may also be downloaded from this reposito
 
 ### Analysis Workflow
 
+To-do: update steps
+
 1. Filter by length and identify longest sequence for potential reference. Also, plot the distribution sequence lengths
 2. Format input sequences and create input files for MCScanX
 3. Investigate longest sequence gene content and order using [MCScanX](https://github.com/wyp1125/MCScanX) and the NCBI reference [Arabadopsis thaliana](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001735.4/) chloroplast genome assembly (see "annotations" directory). The CHLOROBOX GeSeq online tool and Cufflinks gffread was used to annotate the chloroplast sequences and create the necessary gff and protein sequences files for the MCScanX synteny analysis.

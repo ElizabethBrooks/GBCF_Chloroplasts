@@ -6,43 +6,40 @@
 #$ -q largemem
 
 # script to run cactus
-# usage: qsub align_cactus-pg.sh analysisType
-# usage ex: qsub align_cactus-pg.sh all
-## job 846238
-# usage ex: qsub align_cactus-pg.sh subset
-## job 846240
-# usage ex: qsub align_cactus-pg.sh LSC
-## job 1426164
-# usage ex: qsub align_cactus-pg.sh IRa
-## job 1426169
-# usage ex: qsub align_cactus-pg.sh SSC
-## job 1426166
-# usage ex: qsub align_cactus-pg.sh IRb
-## job 1426166
-# renamed tests
-# usage ex: qsub align_cactus-pg.sh LSC
-## job 1426172
-# usage ex: qsub align_cactus-pg.sh IRa
-## job 1426173
-# usage ex: qsub align_cactus-pg.sh SSC
-## job 1426174
-# usage ex: qsub align_cactus-pg.sh IRb
-## job 1426175
-# reoriented test
-# usage ex: qsub align_cactus-pg.sh oriented
-## job 1426178
+# usage: qsub align_cactus-pg.sh regionInput analysisType
+# regions (non-inverted IRa and IRb for problematic samples)
+# usage ex: qsub align_cactus-pg.sh LSC regions
+## job 
+# usage ex: qsub align_cactus-pg.sh IRa regions
+## job 
+# usage ex: qsub align_cactus-pg.sh SSC regions
+## job 
+# usage ex: qsub align_cactus-pg.sh IRb regions
+## job 
+# inverted (inverted IRa and IRb for problematic samples)
+# usage ex: qsub align_cactus-pg.sh LSC regions_inverted
+## job 
+# usage ex: qsub align_cactus-pg.sh IRa regions_inverted
+## job 
+# usage ex: qsub align_cactus-pg.sh SSC regions_inverted
+## job 
+# usage ex: qsub align_cactus-pg.sh IRb regions_inverted
+## job 
+
+# retrieve region inputs
+regionInput=$1
 
 # retrieve analysis type
-analysisType=$1
+analysisType=$2
 
 # setup outputs name
-outputsName="chloroplasts_pg_"$analysisType
+outputsName="chloroplasts_pg_"$regionInput
 
 # retrieve software path
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
 
 # retrieve inputs
-inputsPath=$(grep "cactus_pangenome_"$analysisType":" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_pangenome\_$analysisType\://g")
+inputsPath=$(grep "cactus_pangenome_"$regionInput":" ../"inputs/inputs_"$analysisType".txt" | tr -d " " | sed "s/cactus_pangenome\_$regionInput\://g")
 
 # retrieve inputs
 inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_ref://g")
@@ -51,7 +48,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_"$analysisType
+alignOut=$outputsPath"/aligned_"$regionInput
 mkdir $alignOut
 #Check if the folder already exists
 if [ $? -ne 0 ]; then

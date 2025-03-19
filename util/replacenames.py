@@ -69,4 +69,5 @@ def replace_idfileorder_in_phylip(phylip_file, output_file):
                 outfile.write(line + "\n")
 
 # Example usage
-replace_idfileorder_in_phylip('/home/sheri/Downloads/cactus_output_multiline.phy', '/home/sheri/Downloads/cactus_output_multiline_renamed.phy')
+#replace_idfileorder_in_phylip('/home/sheri/Downloads/cactus_output_multiline.phy', '/home/sheri/Downloads/cactus_output_multiline_renamed.phy')
+replace_idfileorder_in_phylip('/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_SSC/cactus_output_multiline_SSC.phy', '/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_SSC/cactus_output_multiline_renamed_SSC.phy')

@@ -48,4 +48,4 @@ def maf_to_phylip(maf_file, output_file):
 
 # Example usage
 #maf_to_phylip("/home/sheri/Downloads/chloroplasts-pg.maf", "/home/sheri/Downloads/cactus_output_multiline.phy")
-maf_to_phylip("/Users/bamflappy/GBCF/JRS/chloroplast/aligned_LSC/chloroplasts_pg_LSC.maf", "/Users/bamflappy/GBCF/JRS/chloroplast/aligned_LSC/cactus_output_multiline.phy")
+maf_to_phylip("/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_IRb/chloroplasts_pg_IRb.maf", "/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_IRb/cactus_output_multiline_IRb.phy")

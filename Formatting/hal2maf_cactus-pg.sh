@@ -12,15 +12,15 @@
 # usage ex: qsub hal2maf_cactus-pg.sh subset
 ## job 846269
 # usage ex: qsub hal2maf_cactus-pg.sh oriented
-## job 
+## job 1426181
 # usage ex: qsub hal2maf_cactus-pg.sh LSC
-## job 
+## job 1426182
 # usage ex: qsub hal2maf_cactus-pg.sh IRa
-## job 
+## job 1426183
 # usage ex: qsub hal2maf_cactus-pg.sh SSC
-## job 
+## job 1426184
 # usage ex: qsub hal2maf_cactus-pg.sh IRb
-## job 
+## job 1426185
 
 # retrieve analysis type
 analysisType=$1
