@@ -18,13 +18,13 @@
 ## job 1507463
 # inverted (inverted IRa and IRb for problematic samples)
 # usage ex: qsub align_cactus-pg.sh LSC regions_inverted
-## job 
+## job 1507466
 # usage ex: qsub align_cactus-pg.sh IRa regions_inverted
-## job 
+## job 1507467
 # usage ex: qsub align_cactus-pg.sh SSC regions_inverted
-## job 
+## job 1507468
 # usage ex: qsub align_cactus-pg.sh IRb regions_inverted
-## job 
+## job 1507469
 
 # retrieve region inputs
 regionInput=$1
