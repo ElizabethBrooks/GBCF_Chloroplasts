@@ -9,13 +9,13 @@
 # usage: qsub align_cactus-pg.sh regionInput analysisType
 # regions (non-inverted IRa and IRb for problematic samples)
 # usage ex: qsub align_cactus-pg.sh LSC regions
-## job 
+## job 1507460
 # usage ex: qsub align_cactus-pg.sh IRa regions
-## job 
+## job 1507461
 # usage ex: qsub align_cactus-pg.sh SSC regions
-## job 
+## job 1507462
 # usage ex: qsub align_cactus-pg.sh IRb regions
-## job 
+## job 1507463
 # inverted (inverted IRa and IRb for problematic samples)
 # usage ex: qsub align_cactus-pg.sh LSC regions_inverted
 ## job 
@@ -48,7 +48,7 @@ inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/ca
 outputsPath=$(grep "outputs:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/outputs://g")
 
 # make a new directory for analysis
-alignOut=$outputsPath"/aligned_"$regionInput
+alignOut=$outputsPath"/aligned_"$regionInput"_"$analysisType
 mkdir $alignOut
 #Check if the folder already exists
 if [ $? -ne 0 ]; then
