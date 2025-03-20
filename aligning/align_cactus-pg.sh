@@ -39,7 +39,7 @@ outputsName="chloroplasts_pg_"$regionInput
 softEnv=$(grep "cactus_env:" ../"inputs/software_HPC.txt" | tr -d " " | sed "s/cactus_env://g")
 
 # retrieve inputs
-inputsPath=$(grep "cactus_pangenome_"$regionInput":" ../"inputs/inputs_"$analysisType".txt" | tr -d " " | sed "s/cactus_pangenome\_$regionInput\://g")
+inputsPath=$(grep $regionInput":" ../"inputs/inputs_"$analysisType".txt" | tr -d " " | sed "s/$regionInput\://g")
 
 # retrieve inputs
 inputRef=$(grep "cactus_ref:" ../"inputs/inputs_HPC.txt" | tr -d " " | sed "s/cactus_ref://g")

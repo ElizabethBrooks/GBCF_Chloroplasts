@@ -5,6 +5,7 @@
 # and ensuring that the IRb and IRa regions are not identical
 # usage: bash get_regions.sh sampleID
 # usage ex: bash get_regions.sh Jailantifolia_136
+# usage ex: bash get_regions.sh JcinereaNB_144
 # usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*.fa; do species=$(basename $i | cut -d"." -f1); bash get_regions.sh $species; done
 
 # retrieve input sample ID
@@ -99,7 +100,8 @@ else
 	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID".bed" -fo $outputDir"/region02_IRa/"$sampleID".fa"
 	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region02_IRa/"$sampleID"_ndhF.bed" -fo $outputDir"/region02_IRa/"$sampleID"_ndhF.fa"
 	# combine region and gene sequences
-	cat $outputDir"/region02_IRa/"$sampleID".fa" | tr -d "\n" > $outputDir"/region02_IRa/"$sampleID".fa.tmp"
+	head -1 $outputDir"/region02_IRa/"$sampleID".fa" > $outputDir"/region02_IRa/"$sampleID".fa.tmp"
+	tail -n+2 $outputDir"/region02_IRa/"$sampleID".fa" | tr -d "\n" >> $outputDir"/region02_IRa/"$sampleID".fa.tmp"
 	tail -n+2 $outputDir"/region02_IRa/"$sampleID"_ndhF.fa" >> $outputDir"/region02_IRa/"$sampleID".fa.tmp"
 	# update header
 	cat $outputDir"/region02_IRa/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region02_IRa/"$sampleID".fa"
@@ -134,7 +136,8 @@ else
 	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID".bed" -fo $outputDir"/region04_IRb/"$sampleID".fa"
 	bedtools getfasta -fi $genomesDir"/"$sampleID".fa" -bed $outputDir"/region04_IRb/"$sampleID"_ndhA.bed" -fo $outputDir"/region04_IRb/"$sampleID"_ndhA.fa"
 	# combine region and gene sequences
-	cat $outputDir"/region04_IRb/"$sampleID".fa" | tr -d "\n" > $outputDir"/region04_IRb/"$sampleID".fa.tmp"
+	head -1 $outputDir"/region04_IRb/"$sampleID".fa" > $outputDir"/region04_IRb/"$sampleID".fa.tmp"
+	tail -n+2 $outputDir"/region04_IRb/"$sampleID".fa" | tr -d "\n" >> $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 	tail -n+2 $outputDir"/region04_IRb/"$sampleID"_ndhA.fa" >> $outputDir"/region04_IRb/"$sampleID".fa.tmp"
 	# update header
 	cat $outputDir"/region04_IRb/"$sampleID".fa.tmp" | sed "s/^>.*/>IRa/g" > $outputDir"/region04_IRb/"$sampleID".fa"
