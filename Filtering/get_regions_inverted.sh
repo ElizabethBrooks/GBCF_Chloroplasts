@@ -29,7 +29,7 @@ mkdir $outputDir"/region04_IRb"
 echo "Beginning analysis..."
 
 # retrieve region posititons
-start_LSC=1
+start_LSC=0
 start_rps19=$(cat $regionsDir"/regions/region01_LSC.txt" | grep $sampleID"\t" | grep "rps19_" | cut -f3)
 end_rps19=$(cat $regionsDir"/regions/region01_LSC.txt" | grep $sampleID"\t" | grep "rps19_" | cut -f4)
 start_ndhF=$(cat $regionsDir"/regions/region03_SSC.txt" | grep $sampleID"\t" | grep "ndhF_" | cut -f3)

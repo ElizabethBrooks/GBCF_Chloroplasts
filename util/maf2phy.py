@@ -1,4 +1,9 @@
 from bx.align import maf
+import sys
+
+# read in file paths
+first_file = sys.argv[1]
+second_file = sys.argv[2]
 
 def maf_to_phylip(maf_file, output_file):
     species_to_alignment = {}
@@ -48,4 +53,5 @@ def maf_to_phylip(maf_file, output_file):
 
 # Example usage
 #maf_to_phylip("/home/sheri/Downloads/chloroplasts-pg.maf", "/home/sheri/Downloads/cactus_output_multiline.phy")
-maf_to_phylip("/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_IRb/chloroplasts_pg_IRb.maf", "/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_IRb/cactus_output_multiline_IRb.phy")
+#maf_to_phylip("/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_IRb/chloroplasts_pg_IRb.maf", "/Users/bamflappy/GBCF/JRS/chloroplast/outputs_HPC/aligned_IRb/cactus_output_multiline_IRb.phy")
+maf_to_phylip(first_file, second_file)

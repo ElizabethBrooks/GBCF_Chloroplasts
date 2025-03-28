@@ -30,7 +30,7 @@ mkdir $outputDir"/region04_IRb"
 echo "Beginning analysis..."
 
 # retrieve region posititons
-start_LSC=1
+start_LSC=0
 start_rps19=$(cat $regionsDir"/regions/region01_LSC.txt" | grep $sampleID"\t" | grep "rps19_" | cut -f3)
 end_rps19=$(cat $regionsDir"/regions/region01_LSC.txt" | grep $sampleID"\t" | grep "rps19_" | cut -f4)
 start_ndhF=$(cat $regionsDir"/regions/region03_SSC.txt" | grep $sampleID"\t" | grep "ndhF_" | cut -f3)
@@ -54,7 +54,7 @@ rm $outputDir"/region01_LSC/"$sampleID".fa.tmp"
 
 # check for inversions
 # check if the end_ndhA is greater than the start_ndhF
-if [[ $start_ndhA -gt $start_ndhF ]]; then
+if [[ $start_ndhA -gt $start_ndhF ]]; then # does not contain an inversion
 	# IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
 	echo "Processing IRa for sample "$sampleID" ..."
 	# setup the region bed file
@@ -90,7 +90,7 @@ if [[ $start_ndhA -gt $start_ndhF ]]; then
 	# clean up
 	rm $outputDir"/region04_IRb/"$sampleID".bed"
 	rm $outputDir"/region04_IRb/"$sampleID".fa.tmp"
-else
+else # contains an inversion
 	# IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
 	echo "Processing IRa for sample "$sampleID" ..."
 	# setup the region and gene bed files

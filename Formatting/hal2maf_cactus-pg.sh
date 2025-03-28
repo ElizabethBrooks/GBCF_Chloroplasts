@@ -9,22 +9,22 @@
 # usage: qsub hal2maf_cactus-pg.sh regionInput analysisType
 # regions (non-inverted IRa and IRb for problematic samples)
 # usage ex: qsub hal2maf_cactus-pg.sh LSC regions
-## job 
+## job 1507624
 # usage ex: qsub hal2maf_cactus-pg.sh IRa regions
-## job 
+## job 1507625
 # usage ex: qsub hal2maf_cactus-pg.sh SSC regions
-## job 
+## job 1507626
 # usage ex: qsub hal2maf_cactus-pg.sh IRb regions
-## job 
+## job 1507627
 # inverted (inverted IRa and IRb for problematic samples)
 # usage ex: qsub hal2maf_cactus-pg.sh LSC regions_inverted
-## job 
+## job 1507628
 # usage ex: qsub hal2maf_cactus-pg.sh IRa regions_inverted
-## job 
+## job 1507629
 # usage ex: qsub hal2maf_cactus-pg.sh SSC regions_inverted
-## job 
+## job 1507630
 # usage ex: qsub hal2maf_cactus-pg.sh IRb regions_inverted
-## job 
+## job 1507631
 
 # retrieve region inputs
 regionInput=$1
