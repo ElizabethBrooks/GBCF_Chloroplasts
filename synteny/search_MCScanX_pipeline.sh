@@ -8,37 +8,46 @@
 # usage ex: # usage ex: for i in /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/*GFF3.gff3; do species=$(basename $i | sed "s/JRS_chloro_long_//g" | sed "s/_GFF3.gff3//g"); bash search_MCScanX_pipeline.sh $species Jailantifolia_136; done
 
 # retrieve inputs
-queryTag=$1
-dbTag=$2
+queryTag="JcinereaNB_144"
+dbTag="Jailantifolia_136"
+#queryTag=$1
+#dbTag=$2
 
 # retrieve software location
 softLoc=$(grep "mcscanx:" ../inputs/inputs_local.txt | tr -d " " | sed "s/mcscanx://g")
 
 # retrieve inputs and outputs directory path
-outputDir=$(grep "outputs:" ../inputs/inputs_local.txt | tr -d " " | sed "s/outputs://g")
+outputDir="/Users/bamflappy/GBCF/JRS/chloroplast"
+#outputDir=$(grep "outputs:" ../inputs/inputs_local.txt | tr -d " " | sed "s/outputs://g")
 
 # setup inputs directory
-inputsDir=$outputDir"/features_gffread"
+inputsDir=$outputDir
+#inputsDir=$outputDir"/features_gffread"
 
 # retrieve chloroplast annotations
-chloroAnnot=$(grep "annotationsChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | sed "s/annotationsChloroplasts://g")
+#chloroAnnot=$(grep "annotationsChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | sed "s/annotationsChloroplasts://g")
 
 # setup inputs paths
-queryFileIn=$inputsDir"/"$queryTag"_proteins.fa"
-dbFileIn=$inputsDir"/"$dbTag"_proteins.fa"
-queryFileFeat=$chloroAnnot"/formatted/"$queryTag"_chloroplast_genes.gff"
-dbFileFeat=$chloroAnnot"/formatted/"$dbTag"_chloroplast_genes.gff"
+queryFileIn="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_144/Jailantifolia_144_proteins.fa"
+dbFileIn="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_136/Jailantifolia_136_proteins.fa"
+queryFileFeat="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_144/formatted_blatX_hits/JcinereaNB_144_chloroplast_genes.gff"
+dbFileFeat="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_136/formatted_blatX_hits/Jailantifolia_136_chloroplast_genes.gff"
+#queryFileIn=$inputsDir"/"$queryTag"_proteins.fa"
+#dbFileIn=$inputsDir"/"$dbTag"_proteins.fa"
+#queryFileFeat=$chloroAnnot"/formatted/"$queryTag"_chloroplast_genes.gff"
+#dbFileFeat=$chloroAnnot"/formatted/"$dbTag"_chloroplast_genes.gff"
 
 # TO-DO: fix formatting of feature files
 
 # setup outputs directory
-outputFolder=$outputDir"/synteny_MCScanX"
+outputFolder=$outputDir"/synteny_MCScanX_"$queryTag"_"$dbTag
+#outputFolder=$outputDir"/synteny_MCScanX"
 
 # make output directory
-mkdir $outputFolder
+#mkdir $outputFolder
 
 # setup outputs subdirectory
-outputFolder=$outputFolder"/"$queryTag"_"$dbTag
+#outputFolder=$outputFolder"/"$queryTag"_"$dbTag
 
 # make output subdirectory
 mkdir $outputFolder

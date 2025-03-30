@@ -6,6 +6,9 @@
 # usageEx: bash format_features.sh jaC /Users/bamflappy/GBCF/JRS/chloroplast/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/sequence.gff3
 # usageEx: bash format_features.sh Jailantifolia_136 /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/JRS_chloro_long_Jailantifolia_136_GFF3.gff3
 # usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/*GFF3.gff3; do species=$(basename $i | sed "s/JRS_chloro_long_//g" | sed "s/_GFF3.gff3//g"); bash format_features.sh $species $i; done
+# usageEx: bash format_features.sh JcinereaNB_144 /Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_144/GeSeqJob-144_chloroplast_GFF3.gff3
+# usageEx: bash format_features.sh Jailantifolia_136 /Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_136/GeSeqJob-136_chloroplast_GFF3.gff3
+# usageEx: for i in /Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX_re_oriented/*GFF3.gff3; do species=$(basename $i | cut -d "_" -f1); bash format_features.sh $species $i; done
 
 # retrieve species and chromosome tag
 speciesTag=$1

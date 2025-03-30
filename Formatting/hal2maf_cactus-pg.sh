@@ -25,6 +25,8 @@
 ## job 1507630
 # usage ex: qsub hal2maf_cactus-pg.sh IRb regions_inverted
 ## job 1507631
+# usage ex: qsub hal2maf_cactus-pg.sh chloroplast regions_re_oriented
+## job 1585662
 
 # retrieve region inputs
 regionInput=$1

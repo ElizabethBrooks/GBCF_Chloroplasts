@@ -12,6 +12,7 @@
 # usage ex: bash maf2phy_driver.sh IRa regions_inverted
 # usage ex: bash maf2phy_driver.sh SSC regions_inverted
 # usage ex: bash maf2phy_driver.sh IRb regions_inverted
+# usage ex: bash maf2phy_driver.sh chloroplast regions_re_oriented
 
 # retrieve region inputs
 regionInput=$1

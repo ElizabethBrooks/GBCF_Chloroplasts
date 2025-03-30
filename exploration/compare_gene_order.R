@@ -6,10 +6,12 @@
 library(tidyverse)
 
 # retrieve list of gff files
-file_list <- read.delim("/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/samples_files_blastx_hits.txt", header = FALSE)
+#file_list <- read.delim("/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/samples_files_blastx_hits.txt", header = FALSE)
+file_list <- read.delim("/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/samples_files_blastx_hits_re_oriented.txt", header = FALSE)
 
 # retrieve list of gene names
-gene_list <- read.delim("/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/sample_genes_unique.txt", header = FALSE)
+#gene_list <- read.delim("/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/sample_genes_unique.txt", header = FALSE)
+gene_list <- read.delim("/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/sample_genes_unique_re_oriented.txt", header = FALSE)
 
 # remove gene number tags
 #gene_list <- str_split_i(gene_list$V1, pattern = "_", i = 1)
@@ -67,4 +69,5 @@ for (file_num in 1:nrow(file_list)) {
 samples_merged_sorted <- samples_merged[,order(unlist(samples_merged[20,]))]
 
 # output table of gene orders
-write.csv(samples_merged_sorted, file = "/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/gene_location_comparison.csv", row.names = FALSE, quote = FALSE)
+#write.csv(samples_merged_sorted, file = "/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/gene_location_comparison.csv", row.names = FALSE, quote = FALSE)
+write.csv(samples_merged_sorted, file = "/Users/bamflappy/Repos/GBCF_Chloroplasts/inputs/gene_location_comparison_re_oriented.csv", row.names = FALSE, quote = FALSE)

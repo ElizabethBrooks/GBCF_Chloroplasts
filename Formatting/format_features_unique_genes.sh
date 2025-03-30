@@ -4,7 +4,8 @@
 # usage: bash format_features_unique_genes.sh
 
 # setup inputs path
-inputsPath="/Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/formatted_blatX_hits/sorted/"
+#inputsPath="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX/formatted_blatX_hits/sorted"
+inputsPath="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX_re_oriented/formatted_blatX_hits/sorted"
 
 # pre clean up
 rm -r $inputsPath
@@ -13,10 +14,12 @@ rm -r $inputsPath
 mkdir $inputsPath
 
 # sort gene locations
-for i in /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/formatted_blatX_hits/*J*_chloroplast_genes.gff; do echo $i; newName=$(basename $i | sed "s/\.gff//g"); cat $i | sort -k3 -n > $inputsPath"/"$newName"_sorted.gff"; done
+#for i in /Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX/formatted_blatX_hits/*_chloroplast_genes.gff; do echo $i; newName=$(basename $i | sed "s/\.gff//g"); cat $i | sort -k3 -n > $inputsPath"/"$newName"_sorted.gff"; done
+for i in /Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX_re_oriented/formatted_blatX_hits/*_chloroplast_genes.gff; do echo $i; newName=$(basename $i | sed "s/\.gff//g"); cat $i | sort -k3 -n > $inputsPath"/"$newName"_sorted.gff"; done
 
 # setup outputs file path
-outputsPath="/Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/formatted_blatX_hits/formatted_locations"
+#outputsPath="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX/formatted_blatX_hits/formatted_locations"
+outputsPath="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX_re_oriented/formatted_blatX_hits/formatted_locations"
 
 # pre clean up
 rm -r $outputsPath
@@ -25,7 +28,7 @@ rm -r $outputsPath
 mkdir $outputsPath
 
 # retrieve the gene names for each genome
-for i in $inputsPath"/"*J*; do
+for i in $inputsPath"/"*; do
 	# status message
 	echo $i
 	# create new file name

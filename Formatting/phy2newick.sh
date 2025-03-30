@@ -12,6 +12,7 @@
 # usage ex: bash phy2newick.sh IRa regions_inverted
 # usage ex: bash phy2newick.sh SSC regions_inverted
 # usage ex: bash phy2newick.sh IRb regions_inverted
+# usage ex: bash phy2newick.sh chloroplast regions_re_oriented
 
 # retrieve region inputs
 regionInput=$1

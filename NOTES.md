@@ -74,39 +74,11 @@ Genes in the discordant region:
 The synteny plots and data have been uploaded to the GBCF_JRS_Chloroplasts/synteny box folder for all of the chloroplast sequences. These include the suspicious sequences with alignment issues (138, 140, 142, 144, 145, 148, 149, 151, 154, 156, 158, 160, 161, 163). 
 
 ##### Fixing alignment regions
-1) Compile Gene Start/Stop Points
-We need to compile all the files in JRS_CHLOROBOX/formatted/ to extract the gene start and stop points for each genome and gene. This will involve combining these files into a single table.
-
-2) Split Genomes into Four UNIQUE Parts
-a) Concept: We need to split each genome into four parts, ensuring that the IRb and IRa regions are not identical. I’ve identified single-copy genes and located genes just outside the IRb and IRa regions, adding context information where possible.
-
-  LSC: From psbA through rps19 (complete LSC section)
-  IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
-  SSC: From ndhF through ndhA (complete SSC section)
-  IRb: From ndhA through rpl2 (IRb + neighboring SSC region)
-
-By overlapping these regions, we can position them correctly—aligning the overlap of ndhF in IRa and SSC ensures the correct orientation of IRa with SSC. The same applies to IRb, but we cannot overlap at the end of IRb, so we need to capture the latter rpl2 region (not the one by rps19).
-
-b) Practical Steps:
-Once we have the gene location list from Step 1, we’ll subset each genome based on the defined regions. The exact points will differ by genome, so this needs to be done for each affected sample (see list below).
-
-3) Separate Genome Alignment
-After splitting the genomes into four sections, we will align them individually using the same methods we’ve previously used.
-
-4) Reassemble
-Finally, we’ll combine the aligned sections, using the overlapping single copy genes (ndhA and ndhF) to force correct order. This will add geneic context to the full genome alignment, as Cactus does so well, and allow us to fix misassemblies.
-
-##### Identifying alignment regions
-
-We need to split each genome into four parts using single copy genes and ensuring that the IRb and IRa regions are not identical:
-- LSC (from start to LSC): From psbA through rps19 (complete LSC section)
-- IRa: From rps19 through ndhF (IRa + neighboring SSC and LSC regions)
-- SSC: From ndhF through ndhA (complete SSC section)
-- IRb (from IRb to end): From ndhA through rpl2 (IRb + neighboring SSC region)
+In order to fix the inversion issue in the problematic samples, I replaced the region that spans between ycf1 and the ycf1-fragment with the reverse complement of that region. Then I created alignments of all the chloroplast genomes using cactus pangenome. The alignments have been added to the all_re_oriented directory of the project box folder. With the outputs from cactus I created phylogenetic trees using TreeDyn and Tree Viewer.
 
 ###### Investigating discordant regions
 
-Need to reverse complement the sequences in the SSC region, then create updated fasta and bed files. 
+Need to reverse complement the sequences in the inverted region, then create updated fasta and bed files. 
 
 Test blast (refernce):
 ```
@@ -127,20 +99,20 @@ bedtools getfasta -fi /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplas
 ```
 
 ###### Discordant sequneces
-region03_142
-region03_144
-region03_145
-region03_148
-region03_163
-region03_149
-region03_151
-region03_154
-region03_156
-region03_158
-region03_160
-region03_138
-region03_140
-region03_161
+- region03_142
+- region03_144
+- region03_145
+- region03_148
+- region03_163
+- region03_149
+- region03_151
+- region03_154
+- region03_156
+- region03_158
+- region03_160
+- region03_138
+- region03_140
+- region03_161
 
 ##### Formatting
 

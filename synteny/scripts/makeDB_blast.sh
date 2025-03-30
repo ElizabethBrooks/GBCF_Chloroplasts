@@ -16,7 +16,7 @@ outputFolder=$2
 dbType=$3
 
 # status message
-echo "Building blast able databases..."
+echo "Building blastable databases..."
 
 # make the blast able database
 makeblastdb -in $dbFile -out $outputFolder -dbtype $dbType
