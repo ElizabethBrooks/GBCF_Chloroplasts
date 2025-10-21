@@ -1,19 +1,22 @@
 #!/bin/bash
 
 # script to extract CDS and protein sequences from a chloroplast fasta using a gff created with CHLOROBOX online
-# usage: bash extract_features.sh speciesTag
-# usage ex: for i in /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX/*GFF3.gff3; do species=$(basename $i | sed "s/JRS_chloro_long_//g" | sed "s/_GFF3.gff3//g"); bash extract_features.sh $species; done
+# usage: bash extract_features.sh speciesTag inputAnnot
+# usage ex: for i in /Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX/*GFF3.gff3; do species=$(basename $i | sed "s/JRS_chloro_long_//g" | sed "s/_GFF3.gff3//g"); bash extract_features.sh $species; done
+# usage ex: for i in /Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX/blatX_hits/J*.gff; do species=$(basename $i | sed "s/_blatx.gff//g"); bash extract_features.sh $species $i; done
 
 # retrieve input species
 #speciesTag="Jailantifolia_144"
 speciesTag=$1
 
 # retrieve chloroplast annotations
-chloroAnnot=$(grep "annotationsChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | sed "s/annotationsChloroplasts://g")
+#chloroAnnot=$(grep "annotationsChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | sed "s/annotationsChloroplasts://g")
 
 # retrieve input species annotations
 #inputAnnot="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_144/GeSeqJob-144_chloroplast_GFF3.gff3"
-inputAnnot=$(ls $chloroAnnot"/"*$speciesTag"_"*"GFF3.gff3")
+#inputAnnot=$(ls $chloroAnnot"/"*$speciesTag"_"*"GFF3.gff3")
+#inputAnnot=$(ls $chloroAnnot"/"*$speciesTag"_"*".gff")
+inputAnnot=$2
 
 # retrieve chloroplast sequences
 chloroSeq=$(grep "longChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | sed "s/longChloroplasts://g")
@@ -21,7 +24,8 @@ chloroSeq=$(grep "longChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | se
 # setup outputs directory
 #outputsDir="/Users/bamflappy/GBCF/JRS/chloroplast/annotations/chloroplast_144"
 outputsDir=$(grep "outputs:" ../inputs/inputs_local.txt | tr -d " " | sed "s/outputs://g")
-outputsDir=$outputsDir"/features_gffread"
+#outputsDir=$outputsDir"/features_gffread"
+outputsDir=$outputsDir"/features_gffread_blatX_hits"
 mkdir $outputsDir
 
 # move to outputs directory

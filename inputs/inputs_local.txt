@@ -6,5 +6,5 @@ ailanthifoliaFeat: /Users/bamflappy/GBCF/JRS/chloroplast/data/JuglansAilanthifol
 thalianaRef: /Users/bamflappy/GBCF/JRS/chloroplast/data/ArabidopsisThaliana/Arabidopsis_thaliana_chloroplast_NC_000932.1_ncbi/sequence.fasta
 ailanthifoliaRef: /Users/bamflappy/GBCF/JRS/chloroplast/data/JuglansAilanthifolia/Juglans_ailanthifolia_chloroplast_NC_046433.1_ncbi/sequence.fasta
 longChloroplasts: /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed.fa
-annotationsChloroplasts: /Users/bamflappy/GBCF/JRS/chloroplast/JRS_CHLOROBOX
+annotationsChloroplasts: /Users/bamflappy/GBCF/JRS/chloroplast/annotations/JRS_CHLOROBOX
 mcscanx: /Users/bamflappy/MCScanX-master
