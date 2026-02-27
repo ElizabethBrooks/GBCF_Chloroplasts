@@ -32,7 +32,7 @@ cd ../util
 # status message
 echo "Beginning analysis..."
 
-# convert phy to newick using FastTree
+# convert maf to phy
 python maf2phy.py $inputsPath"/chloroplasts_pg_"$regionInput".maf" $outputsPath"/cactus_output_multiline_"$regionInput".phy"
 
 # status message

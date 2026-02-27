@@ -1,4 +1,6 @@
-### Notes
+## Notes
+
+### Whole Chloroplast Alignment
 
 #### Step 1
 
@@ -24,13 +26,13 @@ There are two genes unique to A. thaliana (psbZ, psbB) and four genes unique to 
 
 #### Step 4
 
-##### Idnetifying & Fixing inverted regions
+##### Idnetifying & Fixing Inverted Regions
 
 To verify our suspicions regarding reversed orientation of inverted repeat regions (IRa and IRb) with the chloroplasts alignment, I created synteny plots for all of our samples relative to the best reference chloroplast (Juglans ailanthifolia, IDfileorder 136). This will allow us to check for inversions of the IRb or IRa in the sequences of the suspicious samples with apparent alignment issues.
 
 Example synteny plots are shown below for two of the suspicious samples (144 and 161) relative to our best reference (136). The synteny plots for those chloroplasts show some re-arrangements in the dot plot (left) and dual synteny plot (right), which confirm the presence of inversions in our sequences. These regions of discordance are at the right hand end of the chloroplast sequence for each sample, and the regions contain genes found in the IRb, IRa, and SSC (see lists below).
 
-###### 144 - JcinereaNB
+###### Example Sequence 144 - JcinereaNB
 
 ![Figure 3](figures/figure3_JcinereaNB_dot.png)
 ![Figure 4](figures/figure4_JcinereaNB_dual_synteny.png)
@@ -51,7 +53,7 @@ Genes in the discordant region:
 12. ycf1
 13. rpl23
 
-###### 161 - JnigraWGS
+###### Example Sequence 161 - JnigraWGS
 
 ![Figure 5](figures/figure5_JnigraWGS_dot.png)
 ![Figure 6](figures/figure6_JnigraWGS_dual_synteny.png)
@@ -74,13 +76,14 @@ Genes in the discordant region:
 The synteny plots and data have been uploaded to the GBCF_JRS_Chloroplasts/synteny box folder for all of the chloroplast sequences. These include the suspicious sequences with alignment issues (138, 140, 142, 144, 145, 148, 149, 151, 154, 156, 158, 160, 161, 163). 
 
 ##### Fixing alignment regions
-In order to fix the inversion issue in the problematic samples, I replaced the region that spans between ycf1 and the ycf1-fragment with the reverse complement of that region. Then I created alignments of all the chloroplast genomes using cactus pangenome. The alignments have been added to the all_re_oriented directory of the project box folder. With the outputs from cactus I created phylogenetic trees using TreeDyn and Tree Viewer.
+
+In order to fix the inversion issue in the problematic samples, I replaced the region that spans between ycf1 and the ycf1-fragment with the reverse complement of that region. Then I created alignments of all the chloroplast genomes using cactus pangenome. The alignments have been added to the all_re_oriented directory of the project box folder. With the outputs from cactus I created rough initial phylogenetic trees using TreeDyn and Tree Viewer. 
 
 ###### Investigating discordant regions
 
-Need to reverse complement the sequences in the inverted region, then create updated fasta and bed files. 
+I needed to reverse complement the sequences in the inverted region, then created updated fasta and bed files. To verify, I ran some blast tests of reverse complemented sequences (see below). 
 
-Test blast (refernce):
+Test blast (reference):
 ```
 cat /Users/bamflappy/GBCF/JRS/chloroplast/regions/region02.txt | grep "_136" | grep "ndhF_" | sed "s/^.*_136/chloroplast/g" > /Users/bamflappy/GBCF/JRS/chloroplast/tests/136_ndhF.bed
 bedtools getfasta -fi /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*_136.fa -bed /Users/bamflappy/GBCF/JRS/chloroplast/tests/136_ndhF.bed -fo /Users/bamflappy/GBCF/JRS/chloroplast/tests/136_ndhF.fa.out
@@ -98,7 +101,8 @@ cat /Users/bamflappy/GBCF/JRS/chloroplast/regions/region02.txt | grep "_142" | g
 bedtools getfasta -fi /Users/bamflappy/GBCF/JRS/chloroplast/formatted/chloroplast_genomes_renamed/*_142.fa -bed /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.bed -fo /Users/bamflappy/GBCF/JRS/chloroplast/tests/142_ndhF.fa.out
 ```
 
-###### Discordant sequneces
+###### Discordant Sequneces
+
 - region03_142
 - region03_144
 - region03_145
@@ -125,3 +129,20 @@ Additionally, the headers for the chloroplast sequences cannot be only numeric v
 #### Step 7
 
 Only a portion of the chloroplast sequences can be visualized, so this part of the analysis will need to be interactive.
+
+For example, check alingment region chloroplast:112,653-113,511 on IGV using the chloroplast maf.
+
+I converted the maf file to phy using the custom (Sheri) maf2phy.py script. Created very rough initial trees with the phy file to produce a newick file using the phy2newick.sh script with FastTree. Also, vizualize the trees with the newlick files using TreeDyn from https://www.phylogeny.fr/ and Tree Viewer from http://etetoolkit.org/treeview/.
+
+### Chloroplast CDS Alignments
+
+#### Step 5
+
+With BEAST I've tested out making different phylogenies with the aligned chloroplast gene coding sequences. For example, using BEAST with defualts and the following settings:
+
+- Linked - all the genes share the same site model, molecular clock model and tree
+- Substitution model - GTR
+- Clock type - Strict clock
+- Tree prior - Coalescent: Constant Size
+
+It looks like a popular approach generally includes alignment with MAFFT, tree construction using ML with RAxML, BI using GTR models with MrBayes, and posterior probabilities estimation using MCMC. Although some use alignments of the entire chloroplast genome, while others use the concatenated protein coding genes (what I ended up doing here).

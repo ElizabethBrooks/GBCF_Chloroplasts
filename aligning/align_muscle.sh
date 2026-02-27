@@ -1,38 +1,23 @@
 #!/bin/bash
-#$ -M ebrooks5@nd.edu
-#$ -m abe
-#$ -r n
-#$ -N align_muscle_jobOutput
-#$ -q largemem
 
-# script to run cactus
-# usage: qsub align_muscle.sh geneID
+# script to run muscle for each gene
+# usage: bash align_muscle.sh geneID
+# usage: bash align_muscle.sh rpl2_1
 
-# load software
-module load bio/2.0
+# retrieve input gene ID
+geneID=$1
 
 # retrieve inputs and outputs directory path
 outputDir=$(grep "outputs:" ../inputs/inputs_local.txt | tr -d " " | sed "s/outputs://g")
 
 # setup inputs directory
-inputsDir=$outputDir"/features_gffread"
-
-# retrieve chloroplast annotations
-chloroAnnot=$(grep "annotationsChloroplasts:" ../inputs/inputs_local.txt | tr -d " " | sed "s/annotationsChloroplasts://g")
-
-# setup inputs paths
-queryFileIn=$inputsDir"/"$queryTag"_proteins.fa"
+inputsDir=$outputDir"/features_gffread_blatX_hits"
 
 # setup outputs directory
 outputFolder=$outputDir"/aligned_muscle"
 
 # make output subdirectory
 mkdir $outputFolder
-# check if the folder already exists
-if [ $? -ne 0 ]; then
-	echo "The $outputFolder directory already exsists... please remove before proceeding."
-	exit 1
-fi
 
 # move to the new directory
 cd $outputFolder
@@ -43,21 +28,31 @@ dataFolder=$outputFolder"/data"
 # make output subdirectory
 mkdir $dataFolder
 
-# set cleaned input file names
-queryFile=$queryFileIn".cleaned.fa"
+# loop over each protein file
+for i in $inputsDir"/"*"_cds.fa"; do 
+	# retrieve species tag
+	queryTag=$(basename $i | sed "s/_cds.fa//g")
+	# setup outputs file
+	inFile=$dataFolder"/"$queryTag"_"$geneID"_cds.fa"
+	# retrieve the selected gene and clean up IDs by removing hyphens
+	cat $i | tr '\n' '!' | sed "s/!>/\n>/g" | grep -m 1 $geneID | sed "s/!/\n/g" | sed "s/>cds-blatx_/>$queryTag\_/g" | sed "s/\ loc:.*$//g" > $inFile
+done
 
-# retrieve the selected gene and clean up IDs by removing hyphens
-#cat $queryFileIn | sed "s/^.*gene=/>/g" | sed "s/^.*gene=/>$queryTag\_/g" > $queryFile
-cat $queryFileIn | grep $queryTag > $queryFile
+# setup inputs and outputs files
+queryFile=$dataFolder"/"$geneID"_cds.fa"
+outputsFile=$outputFolder"/"$geneID"_cds.aligned.fa"
 
-# setup outputs file
-outputsFile=$inputsDir"/"$queryTag"_proteins.fa"
+# combine protein files for the current gene
+cat $dataFolder"/J"*"_"$geneID"_cds.fa" > $queryFile
+
+# add a final newline
+echo >> $queryFile
 
 # status message
 echo "Beginning analysis..."
 
 # run muscle and align protein sequences for the current gene
-muscle -in $queryFile -out $outputsFile
+muscle -align $queryFile -output $outputsFile
 
 # status message
 echo "Analysis complete!"
